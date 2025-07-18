@@ -61,20 +61,20 @@ LIMITS_DATA_DICT = {
     "X0": {"mass_min_cement": "150", "mass_max_cement": "", "mass_max_a_c": "0.7", "reinforced_min_cement": "180", "reinforced_max_cement": "", "reinforced_max_a_c": "0.65", "prestressed_min_cement": "200", "prestressed_max_cement": "", "prestressed_max_a_c": "0.6"},
     "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "prestressed_max_cement": "", "prestressed_max_a_c": "0.5"},
     "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "prestressed_max_cement": "", "prestressed_max_a_c": "0.45"},
-    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "prestressed_max_cement": "", "prestressed_max_a_c": "0.4"},
-    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
-    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "mass_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "mass_max_cement": "", "prestressed_max_a_c": "0.25"},
-    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "mass_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4"},
+    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "reinforced_max_cement": "", "prestressed_max_a_c": "0.26"},
+    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "reinforced_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "reinforced_max_cement": "", "prestressed_max_a_c": "0.25"},
+    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
@@ -130,7 +130,7 @@ def calc_Z_and_wc(fcm, aggregate_type):
     wc = 1 / Z
     return Z, wc
 
-def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_a_c_norm, max_cement_norm):
+def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_wc_norm, max_cement_norm):
     """
     Ajusta el contenido de cemento según las normativas y límites.
     """
@@ -138,11 +138,11 @@ def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_a
     adjustment_message = ""
 
     # Ajuste por relación w/c máxima
-    if initial_wc > max_a_c_norm:
-        required_cement_for_wc = water_A / max_a_c_norm
+    if initial_wc > max_wc_norm:
+        required_cement_for_wc = water_A / max_wc_norm
         if required_cement_for_wc > adjusted_cement_kg:
             adjusted_cement_kg = required_cement_for_wc
-            adjustment_message += f"Cemento aumentado a {adjusted_cement_kg:.2f} kg/m³ para cumplir el límite máximo de w/c de {max_a_c_norm:.2f}. "
+            adjustment_message += f"Cemento aumentado a {adjusted_cement_kg:.2f} kg/m³ para cumplir el límite máximo de w/c de {max_wc_norm:.2f}. "
 
     # Ajuste por contenido mínimo de cemento
     if adjusted_cement_kg < min_cement_norm:
@@ -165,7 +165,6 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
     """
     sieve_data = []
     if not sieve_data_str.strip():
-        # st.info(f"No se introdujeron datos de tamices. Usando datos por defecto para {num_fractions} fracciones.") # Comentado para evitar spam de mensajes
         default_data = DEFAULT_SIEVE_DATA_2_FRACTIONS_STR if num_fractions == 2 else DEFAULT_SIEVE_DATA_3_FRACTIONS_STR
         sio = io.StringIO(default_data)
         df = pd.read_csv(sio, header=None)
@@ -187,7 +186,6 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
     has_A3_column_in_data = (len(sieve_data[0]) == 4) if sieve_data else False
 
     for row in sieve_data:
-        # Asegurarse de que los datos son numéricos
         try:
             sum_retained_A2 += float(row[2])
             if has_A3_column_in_data:
@@ -203,7 +201,6 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
             m0 = sum_retained_A3 / 100.0
             m1 = sum_retained_A2 / 100.0
         else:
-            # Esto ya se valida en el check de expected_cols, pero lo dejo aquí como doble seguridad
             raise ValueError("Para 3 fracciones, se esperaba la columna '% que retiene A3' para calcular m0 y m1. Asegúrese de que los datos de tamices tienen 4 columnas.")
             
     return m0, m1
@@ -213,14 +210,13 @@ def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_p
     Aplica correcciones a los porcentajes de las fracciones de árido.
     """
     corrected_t = list(t_fractions)
-    if len(corrected_t) < 2: return corrected_t # No hay suficientes fracciones para aplicar correcciones complejas
+    if len(corrected_t) < 2: return corrected_t 
 
     # Corrección por tipo de árido (triturado)
     if aggregate_type == "crushed":
         bonus = 4.0
-        corrected_t[0] += bonus # Aumenta la fracción más fina
+        corrected_t[0] += bonus 
         if len(corrected_t) > 1:
-            # Distribuye la deducción proporcionalmente entre las otras fracciones
             remaining_sum = sum(corrected_t[1:])
             if remaining_sum > 0:
                 for i in range(1, len(corrected_t)):
@@ -229,9 +225,8 @@ def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_p
     # Corrección por vibrado
     if vibrated:
         bonus = 4.0
-        corrected_t[-1] += bonus # Aumenta la fracción más gruesa
+        corrected_t[-1] += bonus 
         if len(corrected_t) > 1:
-            # Distribuye la deducción proporcionalmente entre las otras fracciones
             remaining_sum = sum(corrected_t[:-1])
             if remaining_sum > 0:
                 for i in range(len(corrected_t) - 1):
@@ -240,9 +235,8 @@ def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_p
     # Corrección por tipo de colocación (masa)
     if placing_type == "mass":
         bonus = 3.0
-        corrected_t[-1] += bonus # Aumenta la fracción más gruesa
+        corrected_t[-1] += bonus 
         if len(corrected_t) > 1:
-            # Distribuye la deducción proporcionalmente entre las otras fracciones
             remaining_sum = sum(corrected_t[:-1])
             if remaining_sum > 0:
                 for i in range(len(corrected_t) - 1):
@@ -252,7 +246,7 @@ def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_p
     if air_pct > 0:
         deduction = air_pct
         if len(corrected_t) > 0:
-            corrected_t[0] -= deduction # Reduce la fracción más fina
+            corrected_t[0] -= deduction 
 
     # Asegurarse de que ningún porcentaje sea negativo
     return [max(0, val) for val in corrected_t]
@@ -263,26 +257,23 @@ def normalize_aggregate_percentages(t_fractions):
     """
     current_sum = sum(t_fractions)
     if current_sum <= 0:
-        # Si la suma es cero o negativa, distribuye uniformemente si hay fracciones, o devuelve vacío.
         return [100.0 / len(t_fractions)] * len(t_fractions) if len(t_fractions) > 0 else []
     return [(val / current_sum) * 100.0 for val in t_fractions]
 
 # --- Interfaz de Streamlit ---
 
-st.set_page_config(layout="wide", page_title="Calculadora de Hormigones") # Configuración de la página
+st.set_page_config(layout="wide", page_title="Calculadora de Hormigones")
 
 st.title("Bienvenido a la calculadora de hormigones")
 st.header("--- Diseño de Mezclas de Hormigón Carlos de la Peña ---")
 
 st.subheader("Por favor, proporcione los siguientes parámetros:")
 
-# Inicializar estados de sesión si no existen
-if 'show_t0_input' not in st.session_state:
-    st.session_state.show_t0_input = False
+# Inicializar estados de sesión
 if 'show_final_results' not in st.session_state:
     st.session_state.show_final_results = False
-if 't1_pct_input' not in st.session_state: # Inicializar t1_pct_input para evitar KeyError si no se muestra
-    st.session_state.t1_pct_input = 25.0 # Valor por defecto
+if 't1_pct_input' not in st.session_state:
+    st.session_state.t1_pct_input = 25.0
 
 # Columna para inputs generales
 col1, col2 = st.columns(2)
@@ -294,8 +285,7 @@ with col1:
     D = st.selectbox("Tamaño máximo del árido en mm", [20, 40, 80], index=2)
 
 with col2:
-    # Guardamos num_fractions en session_state inmediatamente después de su selección
-    # El valor por defecto de 2 asegura que, al iniciar la app, no se pida t1
+    # Este selectbox controla directamente la visibilidad de t1
     st.session_state.num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
     
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
@@ -315,51 +305,69 @@ sieve_data_str = st.text_area(
     help=sieve_help_text
 )
 
-# Botón para la primera etapa de cálculo
-if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
-    # Al presionar este botón, siempre reseteamos el estado de visibilidad
-    st.session_state.show_t0_input = False 
-    st.session_state.show_final_results = False
+# --- Sección de inputs para t0 y t1 (SIEMPRE VISIBLE, t1 CONDICIONAL) ---
+st.subheader("--- Proporciones de Árido ---")
+
+st.image(
+    "assets/t0_instructions.png",
+    caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
+    use_container_width=True
+)
+
+t0_finest_agg_pct = st.number_input(
+    "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
+    min_value=0.0, max_value=100.0, value=65.0, step=1.0,
+    key="t0_input"
+)
+
+# Lógica para mostrar t1_pct_input SÓLO si num_fractions es 3
+t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
+if st.session_state.num_fractions == 3: 
+    st.image(
+        "assets/t1_instructions.png", 
+        caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
+        use_container_width=True
+    )
+    t1_pct = st.number_input(
+        "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
+        min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, # Usa el valor guardado
+        key="t1_input" 
+    )
+    st.session_state.t1_pct_input = t1_pct # Actualiza el valor en session_state
+    
+    if t0_finest_agg_pct + t1_pct > 100.0:
+        st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
+        st.stop() 
+else: # Si num_fractions es 2, t1_pct se calcula
+    t1_pct = 100.0 - t0_finest_agg_pct
+    st.session_state.t1_pct_input = t1_pct # Guarda el calculado para consistencia
+
+# --- Botón para iniciar el cálculo principal ---
+if st.button("Calcular Diseño Final de Mezcla"):
+    st.session_state.show_final_results = False # Resetea los resultados anteriores
     
     try:
-        st.header("Resultados Iniciales del Cálculo")
-        
-        # 2. Cargar límites ambientales
-        st.subheader("Límites ambientales")
+        # 1. Cargar límites ambientales
         min_cement_norm, max_cement_norm, max_a_c_norm = load_limits(exposure_class, placing_type)
         st.session_state.min_cement_norm = min_cement_norm
         st.session_state.max_cement_norm = max_cement_norm
         st.session_state.max_a_c_norm = max_a_c_norm
 
-        st.write(f"Límites para {exposure_class} (colocación {placing_type}):")
-        st.write(f"  - Cemento Mínimo: {min_cement_norm} kg/m³")
-        if max_cement_norm is not None:
-            st.write(f"  - Cemento Máximo: {max_cement_norm} kg/m³")
-        st.write(f"  - Relación w/c Máxima: {max_a_c_norm}")
-
-        # 3. Calcular la demanda de agua base (A) en l/m³)
-        st.subheader("Cálculo de Agua y Cemento")
+        # 2. Calcular la demanda de agua base (A) en l/m³)
         water_A = calc_water(consistency, aggregate_type, D)
         st.session_state.water_A = water_A
-        st.write(f"**Demanda de agua base (A):** {water_A:.2f} l/m³")
 
-        # 4. Calcular Z y la relación w/c
+        # 3. Calcular Z y la relación w/c
         Z_factor, initial_wc = calc_Z_and_wc(fcm, aggregate_type)
         st.session_state.initial_wc = initial_wc
-        st.write(f"**Factor Z calculado:** {Z_factor:.2f}")
-        st.write(f"**Relación w/c inicial:** {initial_wc:.3f}")
 
-        # 5. Calcular el contenido inicial de cemento
+        # 4. Calcular el contenido inicial de cemento
         initial_cement_kg = water_A * Z_factor
         st.session_state.initial_cement_kg = initial_cement_kg
-        st.write(f"**Contenido inicial de cemento (basado en A y Z):** {initial_cement_kg:.2f} kg/m³")
 
-        # 6. Validación normativa y ajuste de cemento
+        # 5. Validación normativa y ajuste de cemento
         adjusted_cement_kg, adjustment_message = adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_a_c_norm, max_cement_norm)
         st.session_state.adjusted_cement_kg = adjusted_cement_kg
-        st.write(f"**Contenido de cemento ajustado:** {adjusted_cement_kg:.2f} kg/m³")
-        if adjustment_message:
-            st.info(f"Nota: {adjustment_message}")
 
         # Calcular el volumen de cemento para ajuste posterior
         cement_volume_initial = initial_cement_kg / CEMENT_DENSITY
@@ -367,149 +375,84 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
         cement_volume_difference = cement_volume_adjusted - cement_volume_initial
         st.session_state.cement_volume_difference = cement_volume_difference
 
-        # --- Cálculo de Módulos de Finura ---
-        st.subheader("Cálculo de Módulos de Finura")
+        # 6. Cálculo de Módulos de Finura (usando num_fractions del session_state)
         m0_sieve, m1_sieve = compute_fineness_modules_from_sieve(sieve_data_str, st.session_state.num_fractions)
         st.session_state.m0_sieve = m0_sieve
         st.session_state.m1_sieve = m1_sieve
 
-        st.write(f"**Módulo de finura calculado m0:** {m0_sieve:.2f}")
-        if m1_sieve is not None:
-            st.write(f"**Módulo de finura calculado m1:** {m1_sieve:.2f}")
+        # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
+        if st.session_state.num_fractions == 3:
+            current_t1_pct = st.session_state.t1_pct_input # Usamos el valor del input directo
+        else: 
+            current_t1_pct = 100.0 - t0_finest_agg_pct # Se calcula t1 para 2 fracciones
         
-        # Habilitar la siguiente sección
-        st.session_state.show_t0_input = True
+        # Cálculo de proporciones de árido
+        if st.session_state.num_fractions == 3:
+            t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) 
+            if t2_pct < 0:
+                 st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
+                 t2_pct = 0.0
+            initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
+            st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
+        else: 
+            initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] 
+            st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
+
+        # Aplicar correcciones
+        corrected_t_fractions = apply_corrections(initial_t_fractions, aggregate_type, vibrated, placing_type, air_pct)
+        st.write(f"**Porcentajes de árido después de las correcciones:** {', '.join([f'{t:.2f}%' for t in corrected_t_fractions])}")
+
+        # Normalizar porcentajes
+        final_aggregate_percentages = normalize_aggregate_percentages(corrected_t_fractions)
+        st.write(f"**Porcentajes finales de árido normalizados:** {', '.join([f'{t:.2f}%' for t in final_aggregate_percentages])}")
+
+        # --- Volúmenes Finales de Diseño de Mezcla ---
+        st.header("--- Volúmenes Finales de Diseño de Mezcla ---")
+        Vc = adjusted_cement_kg / CEMENT_DENSITY
+        V_aridos = 1025.0 - Vc - water_A
+        st.write(f"**Volumen disponible para áridos (V_aridos):** {V_aridos:.2f} litros/m³")
+
+        # Cálculo inicial de volúmenes de árido (antes del ajuste por cemento)
+        aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
+        
+        # Ajuste final del volumen de árido fino por diferencia de volumen de cemento
+        if cement_volume_difference > 0 and len(aggregate_volumes) > 0:
+            aggregate_volumes[0] -= cement_volume_difference
+            if aggregate_volumes[0] < 0:
+                st.warning(f"Advertencia: El volumen de árido fino se volvió negativo ({aggregate_volumes[0]:.2f} L) tras el ajuste por cemento. Se ha limitado a 0.")
+                aggregate_volumes[0] = 0.0
+
+        actual_total_agg_vol = sum(aggregate_volumes) 
+        
+        st.subheader("Proporciones Finales de Mezcla (por m³)")
+        st.write(f"**Agua:** {water_A:.2f} litros")
+        st.write(f"**Cemento:** {adjusted_cement_kg:.2f} kg ({Vc:.2f} litros)")
+        st.write(f"**Porcentaje Granulométrico de Árido más fino (t0):** {t0_finest_agg_pct:.2f}%")
+        if st.session_state.num_fractions == 3: # Solo muestra t1 si hay 3 fracciones
+            st.write(f"**Porcentaje Granulométrico de Árido intermedio (t1):** {current_t1_pct:.2f}%")
+        st.markdown("---")
+
+        for i, vol in enumerate(aggregate_volumes):
+            st.write(f"**Fracción de Árido {i+1}:**")
+            st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
+            st.write(f"  - Volumen: {vol:.2f} litros")
+
+        # Comprobación final del volumen
+        total_calculated_volume = water_A + Vc + actual_total_agg_vol
+        st.subheader("Comprobación de Volumen Total")
+        st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
+        if abs(total_calculated_volume - 1025) > 10:
+            st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
+
+        # Guardar en session_state para las gráficas
+        st.session_state.aggregate_volumes = aggregate_volumes
+        st.session_state.final_aggregate_percentages = final_aggregate_percentages
+        st.session_state.show_final_results = True
 
     except (ValueError, KeyError, IndexError) as e:
-        st.error(f"Ocurrió un error en el cálculo inicial: {e}")
-        st.session_state.show_t0_input = False # Asegurarse de que no se muestre la siguiente sección si hay error
+        st.error(f"Ocurrió un error en el cálculo: {e}")
     except Exception as e:
-        st.error(f"Ocurrió un error inesperado durante el cálculo inicial: {e}")
-        st.session_state.show_t0_input = False # Asegurarse de que no se muestre la siguiente sección si hay error
-
-# Sección para la entrada de t0 y el cálculo final, mostrada condicionalmente
-if st.session_state.show_t0_input:
-    st.subheader("--- Proporciones de Árido y Cálculo Final ---")
-
-    st.image(
-        "assets/t0_instructions.png",
-        caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-        use_container_width=True
-    )
-
-    t0_finest_agg_pct = st.number_input(
-        "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
-        min_value=0.0, max_value=100.0, value=65.0, step=1.0,
-        key="t0_input"
-    )
-
-    # Lógica para mostrar t1_pct_input SÓLO si num_fractions es 3
-    # NOTA IMPORTANTE: st.session_state.num_fractions debe ser 3 en el momento en que se presiona
-    # el botón "Calcular Módulos de Finura y Proporciones de Agua/Cemento" para que esta sección se renderice correctamente.
-    t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
-    if st.session_state.num_fractions == 3: 
-        st.image(
-            "assets/t1_instructions.png", 
-            caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
-            use_container_width=True
-        )
-        t1_pct = st.number_input(
-            "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
-            min_value=0.0, max_value=100.0, value=25.0, step=1.0,
-            key="t1_input" 
-        )
-        st.session_state.t1_pct_input = t1_pct
-        
-        if t0_finest_agg_pct + t1_pct > 100.0:
-            st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
-            st.stop() 
-    else: # Si num_fractions es 2, t1_pct se calcula
-        t1_pct = 100.0 - t0_finest_agg_pct
-        st.session_state.t1_pct_input = t1_pct 
-    
-
-    if st.button("Calcular Diseño Final de Mezcla"):
-        st.session_state.show_final_results = False 
-        try:
-            # Recuperar valores del estado de la sesión
-            water_A = st.session_state.water_A
-            adjusted_cement_kg = st.session_state.adjusted_cement_kg
-            cement_volume_difference = st.session_state.cement_volume_difference
-            num_fractions = st.session_state.num_fractions 
-
-            # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
-            if num_fractions == 3:
-                current_t1_pct = st.session_state.t1_pct_input 
-            else: 
-                current_t1_pct = 100.0 - t0_finest_agg_pct 
-            
-            # Cálculo de proporciones de árido
-            if num_fractions == 3:
-                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) 
-                if t2_pct < 0:
-                     st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
-                     t2_pct = 0.0
-                initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
-                st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
-            else: 
-                initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] 
-                st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
-
-            # Aplicar correcciones
-            corrected_t_fractions = apply_corrections(initial_t_fractions, aggregate_type, vibrated, placing_type, air_pct)
-            st.write(f"**Porcentajes de árido después de las correcciones:** {', '.join([f'{t:.2f}%' for t in corrected_t_fractions])}")
-
-            # Normalizar porcentajes
-            final_aggregate_percentages = normalize_aggregate_percentages(corrected_t_fractions)
-            st.write(f"**Porcentajes finales de árido normalizados:** {', '.join([f'{t:.2f}%' for t in final_aggregate_percentages])}")
-
-            # --- Volúmenes Finales de Diseño de Mezcla ---
-            st.header("--- Volúmenes Finales de Diseño de Mezcla ---")
-            Vc = adjusted_cement_kg / CEMENT_DENSITY
-            V_aridos = 1025.0 - Vc - water_A
-            st.write(f"**Volumen disponible para áridos (V_aridos):** {V_aridos:.2f} litros/m³")
-
-            # Cálculo inicial de volúmenes de árido (antes del ajuste por cemento)
-            aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
-            
-            # Ajuste final del volumen de árido fino por diferencia de volumen de cemento
-            if cement_volume_difference > 0 and len(aggregate_volumes) > 0:
-                aggregate_volumes[0] -= cement_volume_difference
-                if aggregate_volumes[0] < 0:
-                    st.warning(f"Advertencia: El volumen de árido fino se volvió negativo ({aggregate_volumes[0]:.2f} L) tras el ajuste por cemento. Se ha limitado a 0.")
-                    aggregate_volumes[0] = 0.0
-
-            actual_total_agg_vol = sum(aggregate_volumes) 
-            
-            st.subheader("Proporciones Finales de Mezcla (por m³)")
-            st.write(f"**Agua:** {water_A:.2f} litros")
-            st.write(f"**Cemento:** {adjusted_cement_kg:.2f} kg ({Vc:.2f} litros)")
-            st.write(f"**Porcentaje Granulométrico de Árido más fino (t0):** {t0_finest_agg_pct:.2f}%")
-            if num_fractions == 3: # Solo muestra t1 si hay 3 fracciones
-                st.write(f"**Porcentaje Granulométrico de Árido intermedio (t1):** {current_t1_pct:.2f}%")
-            st.markdown("---")
-
-            for i, vol in enumerate(aggregate_volumes):
-                st.write(f"**Fracción de Árido {i+1}:**")
-                st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
-                st.write(f"  - Volumen: {vol:.2f} litros")
-
-            # Comprobación final del volumen
-            total_calculated_volume = water_A + Vc + actual_total_agg_vol
-            st.subheader("Comprobación de Volumen Total")
-            st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
-            if abs(total_calculated_volume - 1025) > 10:
-                st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
-
-            # Guardar en session_state para las gráficas
-            st.session_state.aggregate_volumes = aggregate_volumes
-            st.session_state.final_aggregate_percentages = final_aggregate_percentages
-            st.session_state.show_final_results = True
-
-        except (ValueError, KeyError, IndexError) as e:
-            st.error(f"Ocurrió un error en el cálculo final: {e}")
-        except Exception as e:
-            st.error(f"Ocurrió un error inesperado durante el cálculo final: {e}")
+        st.error(f"Ocurrió un error inesperado durante el cálculo: {e}")
 
 # ——— Sección de gráficas ———
 if st.session_state.get("show_final_results", False):
