@@ -491,6 +491,7 @@ if st.session_state.show_t0_input:
 # --- al final de calculadora_hormigon.py ---
 
 # ——— Sección de gráficas ———
+import plotly.express as px 
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
