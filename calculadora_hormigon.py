@@ -376,15 +376,28 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
         st.session_state.show_t0_input = False # Asegurarse de que no se muestre la siguiente sección si hay error
 
 # Sección para la entrada de t0 y el cálculo final, mostrada condicionalmente
+# … código anterior …
+
+# Sección para la entrada de t0 y el cálculo final, mostrada condicionalmente
 if st.session_state.show_t0_input:
     st.subheader("--- Proporciones de Árido y Cálculo Final ---")
+
+    # ← Aquí insertas tu imagen con instrucciones
+    st.image(
+        "assets/t0_instructions.png",
+        caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
+        use_column_width=True
+    )
+
     t0_finest_agg_pct = st.number_input(
-        "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)", 
+        "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
         min_value=0.0, max_value=100.0, value=65.0, step=1.0,
-        key="t0_input" # Añadir una clave para evitar problemas con el estado de la sesión
+        key="t0_input"
     )
 
     if st.button("Calcular Diseño Final de Mezcla"):
+        # … resto de tu lógica …
+
         st.session_state.show_final_results = False # Resetear
         try:
             # Recuperar valores del estado de la sesión
