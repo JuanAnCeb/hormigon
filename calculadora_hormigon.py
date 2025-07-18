@@ -290,6 +290,8 @@ with col1:
 
 with col2:
     num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
+    # Guardamos num_fractions en session_state para acceder a él más tarde
+    st.session_state.num_fractions = num_fractions 
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
     exposure_class = st.text_input("Clase de exposición (ej., X0, XC1... XM3)", "XC3").upper().strip()
     vibrated_input = st.radio("¿Está el hormigón vibrado?", ["yes", "no"], index=0)
@@ -327,7 +329,7 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
             st.write(f"  - Cemento Máximo: {max_cement_norm} kg/m³")
         st.write(f"  - Relación w/c Máxima: {max_a_c_norm}")
 
-        # 3. Calcular la demanda de agua base A (l/m³)
+        # 3. Calcular la demanda de agua base (A) en l/m³)
         st.subheader("Cálculo de Agua y Cemento")
         water_A = calc_water(consistency, aggregate_type, D)
         st.session_state.water_A = water_A
@@ -381,7 +383,6 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
 if st.session_state.show_t0_input:
     st.subheader("--- Proporciones de Árido y Cálculo Final ---")
 
-    # ← Aquí insertas tu imagen con instrucciones
     st.image(
         "assets/t0_instructions.png",
         caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
@@ -394,19 +395,24 @@ if st.session_state.show_t0_input:
         key="t0_input"
     )
 
-    t1_pct = None # Initialize t1_pct
-    if num_fractions == 3:
+    # Ahora, mostramos t1 solo si num_fractions es 3
+    t1_pct = None # Inicializamos t1_pct
+    if st.session_state.num_fractions == 3: # Usamos el valor guardado en session_state
         st.image(
-            "assets/t1_instructions.png", # You'd need an image for t1 instructions if you want one
-            caption="🛈 El valor de t1 es el % de la segunda fracción más fina sobre el volumen total de áridos.",
+            "assets/t1_instructions.png", # Asegúrate de tener esta imagen si quieres mostrarla
+            caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
             use_column_width=True
         )
         t1_pct = st.number_input(
             "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
-            min_value=0.0, max_value=100.0, value=25.0, step=1.0, # Default value for t1
+            min_value=0.0, max_value=100.0, value=25.0, step=1.0,
             key="t1_input"
         )
-
+        
+        # Añadir un control para que t0 + t1 no exceda 100% antes de continuar
+        if t0_finest_agg_pct + t1_pct > 100.0:
+            st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
+            st.stop() # Detener la ejecución hasta que el usuario corrija la entrada
 
     if st.button("Calcular Diseño Final de Mezcla"):
         st.session_state.show_final_results = False # Resetear
@@ -417,19 +423,17 @@ if st.session_state.show_t0_input:
             cement_volume_difference = st.session_state.cement_volume_difference
             m0_sieve = st.session_state.m0_sieve
             m1_sieve = st.session_state.m1_sieve
+            num_fractions = st.session_state.num_fractions # Recuperamos num_fractions
 
             # Cálculo de proporciones de árido
             if num_fractions == 3:
-                # t1_pct is now an input
-                if (t0_finest_agg_pct + t1_pct) > 100.0:
-                    st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
-                    st.stop() # Stop execution until user corrects input
+                # t1_pct ya es un input, no se calcula aquí
                 t2_pct = 100.0 - (t0_finest_agg_pct + t1_pct)
                 initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, t1_pct), max(0.0, t2_pct)]
                 st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
             else: # num_fractions == 2
-                t1_pct = 100.0 - t0_finest_agg_pct
-                initial_t_fractions = [t0_finest_agg_pct, t1_pct]
+                t1_pct_calculated = 100.0 - t0_finest_agg_pct
+                initial_t_fractions = [t0_finest_agg_pct, t1_pct_calculated] # Renombrado para claridad
                 st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
 
             # Aplicar correcciones
@@ -460,9 +464,9 @@ if st.session_state.show_t0_input:
             st.subheader("Proporciones Finales de Mezcla (por m³)")
             st.write(f"**Agua:** {water_A:.2f} litros")
             st.write(f"**Cemento:** {adjusted_cement_kg:.2f} kg ({Vc:.2f} litros)")
-            st.write(f"**Porcentaje Granulométrico de Cemento (t0):** {t0_finest_agg_pct:.2f}%")
+            st.write(f"**Porcentaje Granulométrico de Árido más fino (t0):** {t0_finest_agg_pct:.2f}%")
             if num_fractions == 3 and t1_pct is not None:
-                st.write(f"**Porcentaje Granulométrico de Cemento (t1):** {t1_pct:.2f}%")
+                st.write(f"**Porcentaje Granulométrico de Árido intermedio (t1):** {t1_pct:.2f}%")
             st.markdown("---")
 
             for i, vol in enumerate(aggregate_volumes):
@@ -470,7 +474,7 @@ if st.session_state.show_t0_input:
                 st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
                 st.write(f"  - Volumen: {vol:.2f} litros")
 
-                        # Comprobación final del volumen
+            # Comprobación final del volumen
             total_calculated_volume = water_A + Vc + actual_total_agg_vol
             st.subheader("Comprobación de Volumen Total")
             st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
@@ -537,7 +541,5 @@ if st.session_state.get("show_final_results", False):
         text_auto=".1f"
     )
     st.plotly_chart(fig, use_container_width=True)
-else:
-    st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
 else:
     st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
