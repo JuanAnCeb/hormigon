@@ -3,8 +3,9 @@ import pandas as pd
 import io
 import csv
 import math
+import plotly.express as px # Importar plotly aquí arriba para consistencia
 
-# --- Tablas de Datos (Copiadas de penagemini3.py) ---
+# --- Tablas de Datos ---
 
 TABLE_7_22_WATER_DEMAND = {
     "dry": {
@@ -56,13 +57,12 @@ DEFAULT_SIEVE_DATA_3_FRACTIONS_STR = """80,0,0,0
 0.16,100,95,90"""
 
 # --- Datos de CSV Integrados ---
-# Se integra el contenido del CSV para hacer la app autocontenida
 LIMITS_DATA_DICT = {
     "X0": {"mass_min_cement": "150", "mass_max_cement": "", "mass_max_a_c": "0.7", "reinforced_min_cement": "180", "reinforced_max_cement": "", "reinforced_max_a_c": "0.65", "prestressed_min_cement": "200", "prestressed_max_cement": "", "prestressed_max_a_c": "0.6"},
     "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "prestressed_max_cement": "", "prestressed_max_a_c": "0.5"},
     "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "prestressed_max_cement": "", "prestressed_max_a_c": "0.45"},
-    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "mass_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "mass_max_cement": "", "prestressed_max_a_c": "0.4"},
-    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "mass_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "prestressed_max_cement": "", "prestressed_max_a_c": "0.4"},
+    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
     "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
@@ -80,7 +80,7 @@ LIMITS_DATA_DICT = {
     "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
 }
 
-# --- Funciones de Ayuda (Copiadas de penagemini3.py y adaptadas para Streamlit) ---
+# --- Funciones de Ayuda ---
 
 def load_limits(exposure_class, placing_type):
     """
@@ -165,7 +165,7 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
     """
     sieve_data = []
     if not sieve_data_str.strip():
-        st.info(f"No se introdujeron datos de tamices. Usando datos por defecto para {num_fractions} fracciones.")
+        # st.info(f"No se introdujeron datos de tamices. Usando datos por defecto para {num_fractions} fracciones.") # Comentado para evitar spam de mensajes
         default_data = DEFAULT_SIEVE_DATA_2_FRACTIONS_STR if num_fractions == 2 else DEFAULT_SIEVE_DATA_3_FRACTIONS_STR
         sio = io.StringIO(default_data)
         df = pd.read_csv(sio, header=None)
@@ -180,11 +180,11 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
 
     expected_cols = 3 if num_fractions == 2 else 4
     if not sieve_data or len(sieve_data[0]) != expected_cols:
-        raise ValueError(f"Número incorrecto de columnas en los datos de tamices. Se esperaban {expected_cols} para {num_fractions} fracciones.")
+        raise ValueError(f"Número incorrecto de columnas en los datos de tamices. Se esperaban {expected_cols} para {num_fractions} fracciones. Asegúrese de que los datos de tamices están bien formateados.")
 
     sum_retained_A2 = 0.0
     sum_retained_A3 = 0.0
-    has_A3_column_in_data = len(sieve_data[0]) == 4 if sieve_data else False
+    has_A3_column_in_data = (len(sieve_data[0]) == 4) if sieve_data else False
 
     for row in sieve_data:
         # Asegurarse de que los datos son numéricos
@@ -193,7 +193,7 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
             if has_A3_column_in_data:
                 sum_retained_A3 += float(row[3])
         except ValueError:
-            raise ValueError("Los datos de porcentaje retenido en la tabla de tamices deben ser números.")
+            raise ValueError("Los datos de porcentaje retenido en la tabla de tamices deben ser números válidos.")
     
     m0, m1 = None, None
     if num_fractions == 2:
@@ -203,6 +203,7 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
             m0 = sum_retained_A3 / 100.0
             m1 = sum_retained_A2 / 100.0
         else:
+            # Esto ya se valida en el check de expected_cols, pero lo dejo aquí como doble seguridad
             raise ValueError("Para 3 fracciones, se esperaba la columna '% que retiene A3' para calcular m0 y m1. Asegúrese de que los datos de tamices tienen 4 columnas.")
             
     return m0, m1
@@ -268,6 +269,8 @@ def normalize_aggregate_percentages(t_fractions):
 
 # --- Interfaz de Streamlit ---
 
+st.set_page_config(layout="wide", page_title="Calculadora de Hormigones") # Configuración de la página
+
 st.title("Bienvenido a la calculadora de hormigones")
 st.header("--- Diseño de Mezclas de Hormigón Carlos de la Peña ---")
 
@@ -291,9 +294,9 @@ with col1:
     D = st.selectbox("Tamaño máximo del árido en mm", [20, 40, 80], index=2)
 
 with col2:
-    num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
-    # Guardamos num_fractions en session_state para acceder a él más tarde
-    st.session_state.num_fractions = num_fractions 
+    # Guardamos num_fractions en session_state inmediatamente después de su selección
+    st.session_state.num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
+    
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
     exposure_class = st.text_input("Clase de exposición (ej., X0, XC1... XM3)", "XC3").upper().strip()
     vibrated_input = st.radio("¿Está el hormigón vibrado?", ["yes", "no"], index=0)
@@ -363,7 +366,7 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
 
         # --- Cálculo de Módulos de Finura ---
         st.subheader("Cálculo de Módulos de Finura")
-        m0_sieve, m1_sieve = compute_fineness_modules_from_sieve(sieve_data_str, num_fractions)
+        m0_sieve, m1_sieve = compute_fineness_modules_from_sieve(sieve_data_str, st.session_state.num_fractions)
         st.session_state.m0_sieve = m0_sieve
         st.session_state.m1_sieve = m1_sieve
 
@@ -388,7 +391,7 @@ if st.session_state.show_t0_input:
     st.image(
         "assets/t0_instructions.png",
         caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-        use_column_width=True
+        use_container_width=True # Cambiado de use_column_width
     )
 
     t0_finest_agg_pct = st.number_input(
@@ -398,13 +401,12 @@ if st.session_state.show_t0_input:
     )
 
     # Ahora, mostramos t1 solo si num_fractions es 3
-    # Inicializamos t1_pct con un valor por defecto seguro
-    t1_pct = 0.0 
+    t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
     if st.session_state.num_fractions == 3: # Usamos el valor guardado en session_state
         st.image(
             "assets/t1_instructions.png", # Asegúrate de tener esta imagen si quieres mostrarla
             caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
-            use_column_width=True
+            use_container_width=True # Cambiado de use_column_width
         )
         t1_pct = st.number_input(
             "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
@@ -418,10 +420,14 @@ if st.session_state.show_t0_input:
         if t0_finest_agg_pct + t1_pct > 100.0:
             st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
             st.stop() # Detener la ejecución hasta que el usuario corrija la entrada
-    else: # Si num_fractions es 2, nos aseguramos de que t1_pct no se esté usando como input
-        # Calculamos t1_pct para 2 fracciones
+    else: # Si num_fractions es 2, t1_pct se calcula y no es un input directo
         t1_pct = 100.0 - t0_finest_agg_pct
-        st.session_state.t1_pct_input = t1_pct # Guardamos el calculado para consistencia si es necesario.
+        st.session_state.t1_pct_input = t1_pct # Guardamos el calculado para consistencia
+
+    # Para depuración (opcional, puedes borrarlo una vez que funcione)
+    # st.write(f"DEBUG (antes de calc final): t0_finest_agg_pct = {t0_finest_agg_pct:.2f}%")
+    # st.write(f"DEBUG (antes de calc final): t1_pct (input/calc) = {t1_pct:.2f}%")
+    # st.write(f"DEBUG (antes de calc final): num_fractions = {st.session_state.num_fractions}")
 
 
     if st.button("Calcular Diseño Final de Mezcla"):
@@ -431,22 +437,21 @@ if st.session_state.show_t0_input:
             water_A = st.session_state.water_A
             adjusted_cement_kg = st.session_state.adjusted_cement_kg
             cement_volume_difference = st.session_state.cement_volume_difference
-            m0_sieve = st.session_state.m0_sieve
-            m1_sieve = st.session_state.m1_sieve
+            # m0_sieve = st.session_state.m0_sieve # No usado directamente aquí, pero disponible
+            # m1_sieve = st.session_state.m1_sieve # No usado directamente aquí, pero disponible
             num_fractions = st.session_state.num_fractions # Recuperamos num_fractions
 
-            # Recuperar el valor correcto de t1_pct: del input si es 3 fracciones, o calculado si es 2
-            # Aquí es donde estaba el posible problema. Aseguramos que t1_pct se obtenga correctamente.
+            # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
             if num_fractions == 3:
-                current_t1_pct = st.session_state.t1_pct_input
+                current_t1_pct = st.session_state.t1_pct_input # Usamos el valor del input directo
             else: # num_fractions == 2
-                current_t1_pct = 100.0 - t0_finest_agg_pct
-                
+                current_t1_pct = 100.0 - t0_finest_agg_pct # Se calcula t1 para 2 fracciones
+            
             # Cálculo de proporciones de árido
             if num_fractions == 3:
-                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) # Usamos current_t1_pct
+                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) # Usamos current_t1_pct (que ya es el valor del input)
                 if t2_pct < 0:
-                     st.warning(f"Advertencia: La suma de t0 y t1 excede el 100%. t2 se ha ajustado a 0. Ajuste t0 o t1.")
+                     st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
                      t2_pct = 0.0
                 initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
                 st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
@@ -468,16 +473,20 @@ if st.session_state.show_t0_input:
             V_aridos = 1025.0 - Vc - water_A
             st.write(f"**Volumen disponible para áridos (V_aridos):** {V_aridos:.2f} litros/m³")
 
+            # Cálculo inicial de volúmenes de árido (antes del ajuste por cemento)
             aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
             
             # Ajuste final del volumen de árido fino por diferencia de volumen de cemento
             if cement_volume_difference > 0 and len(aggregate_volumes) > 0:
                 aggregate_volumes[0] -= cement_volume_difference
                 if aggregate_volumes[0] < 0:
-                    st.warning(f"Advertencia: El volumen de árido fino se volvió negativo ({aggregate_volumes[0]:.2f} L) tras el ajuste. Se limita a 0.")
+                    st.warning(f"Advertencia: El volumen de árido fino se volvió negativo ({aggregate_volumes[0]:.2f} L) tras el ajuste por cemento. Se ha limitado a 0.")
                     aggregate_volumes[0] = 0.0
+                # Si el primer árido se ajustó, re-normalizar el resto si es necesario para mantener la coherencia
+                # Opcional: redistribuir el exceso negativo entre los otros áridos si tiene sentido para tu modelo.
+                # Por ahora, simplemente se limita a 0.
 
-            actual_total_agg_vol = sum(aggregate_volumes)
+            actual_total_agg_vol = sum(aggregate_volumes) # Recalculamos el total después del ajuste
             
             st.subheader("Proporciones Finales de Mezcla (por m³)")
             st.write(f"**Agua:** {water_A:.2f} litros")
@@ -499,12 +508,6 @@ if st.session_state.show_t0_input:
             if abs(total_calculated_volume - 1025) > 10:
                 st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
 
-            # Recalcular y ajustar aggregate_volumes antes de guardarlo en session_state
-            # Esta parte ya la tienes y debería estar bien.
-            # aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
-            # if cement_volume_difference > 0 and aggregate_volumes:
-            #     aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
-
             # Guardar en session_state para las gráficas
             st.session_state.aggregate_volumes = aggregate_volumes
             st.session_state.final_aggregate_percentages = final_aggregate_percentages
@@ -515,11 +518,7 @@ if st.session_state.show_t0_input:
         except Exception as e:
             st.error(f"Ocurrió un error inesperado durante el cálculo final: {e}")
 
-
-# --- al final de calculadora_hormigon.py ---
-
 # ——— Sección de gráficas ———
-import plotly.express as px
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
@@ -539,7 +538,7 @@ if st.session_state.get("show_final_results", False):
     componentes = ["Agua", "Cemento", "Aire ocluido"] \
                   + [f"Árido {i+1} ({agg_percents[i]:.1f}%)" for i in range(n_agg)]
     volumenes   = [water_l, cement_l, air_l] + agg_vols
-    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6] * n_agg
+    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6] * n_agg # Densidad del árido puede ser una entrada si es variable
     pesos       = [v * d for v, d in zip(volumenes, densidades)]
 
     df_comp = pd.DataFrame({
