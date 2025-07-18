@@ -295,6 +295,8 @@ with col2:
     vibrated_input = st.radio("¿Está el hormigón vibrado?", ["yes", "no"], index=0)
     vibrated = (vibrated_input == "yes")
     air_pct = st.number_input("Porcentaje de aire ocluido (ej., 0 para sin aire)", min_value=0.0, value=1.0, step=0.1)
+    st.session_state.air_pct = air_pct
+    
 
 st.subheader("--- Datos de Análisis Granulométrico ---")
 
@@ -467,7 +469,13 @@ if st.session_state.show_t0_input:
             st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
             if abs(total_calculated_volume - 1025) > 10:
                 st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
-            
+            ggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
+# Ajuste sobre el fino… (igual que antes)
+if cement_volume_difference > 0 and aggregate_volumes:
+    aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
+
+st.session_state.aggregate_volumes = aggregate_volumes
+st.session_state.final_aggregate_percentages = final_aggregate_percentages
             st.session_state.show_final_results = True
 
         except (ValueError, KeyError, IndexError) as e:
@@ -483,26 +491,25 @@ if st.session_state.show_t0_input:
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
-    # Datos básicos
-    water_l   = st.session_state.water_A
-    cement_kg = st.session_state.adjusted_cement_kg
+    # Datos básicos (ya inicializados)
+    water_l   = st.session_state.get("water_A", 0.0)
+    cement_kg = st.session_state.get("adjusted_cement_kg", 0.0)
     cement_l  = cement_kg / CEMENT_DENSITY
-    air_pct   = st.session_state.air_pct
+    air_pct   = st.session_state.get("air_pct", 0.0)
     air_l     = (air_pct / 100.0) * 1025.0
 
-    # Volúmenes y proporciones de áridos
-    agg_vols          = st.session_state.aggregate_volumes              # [L]
-    agg_percents      = st.session_state.final_aggregate_percentages    # [%]
-    n_agg             = len(agg_vols)
+    # Áridos
+    agg_vols     = st.session_state.get("aggregate_volumes", [])
+    agg_percents = st.session_state.get("final_aggregate_percentages", [])
+    n_agg        = len(agg_vols)
 
-    # Construcción de labels dinámicos
+    # Etiquetas con % granular
     componentes = ["Agua", "Cemento", "Aire ocluido"] \
                   + [f"Árido {i+1} ({agg_percents[i]:.1f}%)" for i in range(n_agg)]
     volumenes   = [water_l, cement_l, air_l] + agg_vols
-    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6]*n_agg   # 2.6 por defecto
-    pesos       = [v*d for v, d in zip(volumenes, densidades)]
+    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6] * n_agg
+    pesos       = [v * d for v, d in zip(volumenes, densidades)]
 
-    # DataFrame
     df_comp = pd.DataFrame({
         "Componente":      componentes,
         "Volumen (L)":     volumenes,
@@ -510,10 +517,8 @@ if st.session_state.get("show_final_results", False):
         "Peso (kg)":       pesos
     }).set_index("Componente")
 
-    # Mostrar tabla
     st.dataframe(df_comp)
 
-    # Gráfico de barras agrupadas: Volumen vs Peso
     fig = px.bar(
         df_comp.reset_index(),
         x="Componente",
@@ -521,13 +526,6 @@ if st.session_state.get("show_final_results", False):
         barmode="group",
         title="Volumen y Peso de cada componente",
         text_auto=".1f"
-    )
-    fig.update_layout(
-        yaxis_title="Valor",
-        legend_title="Medida",
-        margin=dict(t=40, b=20),
-        uniformtext_minsize=8,
-        uniformtext_mode="hide"
     )
     st.plotly_chart(fig, use_container_width=True)
 else:
