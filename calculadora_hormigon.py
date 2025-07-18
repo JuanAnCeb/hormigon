@@ -479,13 +479,13 @@ if st.session_state.show_t0_input:
 
 # --- al final de calculadora_hormigon.py ---
 
-# —— Sección de gráficas (sólo si ya se hizo el cálculo final) ——
-import plotly.express as px
+import plotly.express as px  # asegúrate de tener esto al inicio del archivo
 
+# ——— Sección de gráficas ———
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
-    # 1) Recuperar volúmenes ya calculados
+    # Recuperar volúmenes y pesos
     water_l   = st.session_state.get("water_A", 0.0)
     cement_kg = st.session_state.get("adjusted_cement_kg", 0.0)
     cement_l  = cement_kg / CEMENT_DENSITY
@@ -493,12 +493,12 @@ if st.session_state.get("show_final_results", False):
     air_l     = (air_pct / 100.0) * 1025.0
     agg_vols  = st.session_state.get("aggregate_volumes", [])
 
-    # 2) Pedir densidad para cada árido
+    # Pedir densidades para cada árido
     st.markdown("#### Densidades de los áridos")
     user_densities = []
-    for i in range(len(agg_vols)):
+    for i, vol in enumerate(agg_vols, start=1):
         dens = st.number_input(
-            f"Densidad árido {i+1} (kg/L)",
+            f"Densidad árido {i} (kg/L)",
             min_value=0.0,
             value=2.6,
             step=0.01,
@@ -506,14 +506,12 @@ if st.session_state.get("show_final_results", False):
         )
         user_densities.append(dens)
 
-    # 3) Montar listas finales
-    componentes = ["Agua", "Cemento", "Aire ocluido"] + [f"Árido {i+1}" for i in range(len(agg_vols))]
+    # Armar DataFrame
+    componentes = ["Agua", "Cemento", "Aire ocluido"] + [f"Árido {i}" for i in range(1, len(agg_vols)+1)]
     volumenes   = [water_l, cement_l, air_l] + agg_vols
-    # densidad del agua = 1, del cemento = CEMENT_DENSITY, del aire ≈0.0012
     densidades  = [1.0, CEMENT_DENSITY, 0.0012] + user_densities
     pesos       = [v * d for v, d in zip(volumenes, densidades)]
 
-    # 4) Crear DataFrame resumen
     df_comp = pd.DataFrame({
         "Componente":      componentes,
         "Volumen (L)":     volumenes,
@@ -521,10 +519,9 @@ if st.session_state.get("show_final_results", False):
         "Peso (kg)":       pesos
     }).set_index("Componente")
 
-    # 5) Mostrar tabla
     st.dataframe(df_comp)
 
-    # 6) Gráfico de barras agrupadas: Volumen vs Peso
+    # Gráfico de barras agrupadas
     fig = px.bar(
         df_comp.reset_index(),
         x="Componente",
@@ -545,6 +542,3 @@ if st.session_state.get("show_final_results", False):
 else:
     st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
 
-
-else:
-    st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
