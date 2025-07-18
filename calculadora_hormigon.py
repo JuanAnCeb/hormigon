@@ -463,25 +463,28 @@ if st.session_state.show_t0_input:
                 st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
                 st.write(f"  - Volumen: {vol:.2f} litros")
 
-            # Comprobación final del volumen
+                       # Comprobación final del volumen
             total_calculated_volume = water_A + Vc + actual_total_agg_vol
             st.subheader("Comprobación de Volumen Total")
             st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
             if abs(total_calculated_volume - 1025) > 10:
                 st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
-            ggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
-# Ajuste sobre el fino… (igual que antes)
-if cement_volume_difference > 0 and aggregate_volumes:
-    aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
 
-st.session_state.aggregate_volumes = aggregate_volumes
-st.session_state.final_aggregate_percentages = final_aggregate_percentages
+            # Recalcular y ajustar aggregate_volumes antes de guardarlo en session_state
+            aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
+            if cement_volume_difference > 0 and aggregate_volumes:
+                aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
+
+            # Guardar en session_state para las gráficas
+            st.session_state.aggregate_volumes = aggregate_volumes
+            st.session_state.final_aggregate_percentages = final_aggregate_percentages
             st.session_state.show_final_results = True
 
         except (ValueError, KeyError, IndexError) as e:
             st.error(f"Ocurrió un error en el cálculo final: {e}")
         except Exception as e:
             st.error(f"Ocurrió un error inesperado durante el cálculo final: {e}")
+
 
 
 
