@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import csv
 import math
-import plotly.express as px # Importar plotly aquí arriba para consistencia
+import plotly.express as px
 
 # --- Tablas de Datos ---
 
@@ -295,6 +295,7 @@ with col1:
 
 with col2:
     # Guardamos num_fractions en session_state inmediatamente después de su selección
+    # El valor por defecto de 2 asegura que, al iniciar la app, no se pida t1
     st.session_state.num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
     
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
@@ -316,8 +317,10 @@ sieve_data_str = st.text_area(
 
 # Botón para la primera etapa de cálculo
 if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
-    st.session_state.show_t0_input = False # Resetear para evitar mostrar inputs antes de tiempo si se recalcula
+    # Al presionar este botón, siempre reseteamos el estado de visibilidad
+    st.session_state.show_t0_input = False 
     st.session_state.show_final_results = False
+    
     try:
         st.header("Resultados Iniciales del Cálculo")
         
@@ -391,7 +394,7 @@ if st.session_state.show_t0_input:
     st.image(
         "assets/t0_instructions.png",
         caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-        use_container_width=True # Cambiado de use_column_width
+        use_container_width=True
     )
 
     t0_finest_agg_pct = st.number_input(
@@ -400,63 +403,56 @@ if st.session_state.show_t0_input:
         key="t0_input"
     )
 
-    # Ahora, mostramos t1 solo si num_fractions es 3
+    # Lógica para mostrar t1_pct_input SÓLO si num_fractions es 3
+    # NOTA IMPORTANTE: st.session_state.num_fractions debe ser 3 en el momento en que se presiona
+    # el botón "Calcular Módulos de Finura y Proporciones de Agua/Cemento" para que esta sección se renderice correctamente.
     t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
-    if st.session_state.num_fractions == 3: # Usamos el valor guardado en session_state
+    if st.session_state.num_fractions == 3: 
         st.image(
-            "assets/t1_instructions.png", # Asegúrate de tener esta imagen si quieres mostrarla
+            "assets/t1_instructions.png", 
             caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
-            use_container_width=True # Cambiado de use_column_width
+            use_container_width=True
         )
         t1_pct = st.number_input(
             "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
             min_value=0.0, max_value=100.0, value=25.0, step=1.0,
-            key="t1_input" # Asegúrate de que esta key sea única
+            key="t1_input" 
         )
-        # Actualizamos el estado de la sesión con el valor del input t1_pct
         st.session_state.t1_pct_input = t1_pct
         
-        # Añadir un control para que t0 + t1 no exceda 100% antes de continuar
         if t0_finest_agg_pct + t1_pct > 100.0:
             st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
-            st.stop() # Detener la ejecución hasta que el usuario corrija la entrada
-    else: # Si num_fractions es 2, t1_pct se calcula y no es un input directo
+            st.stop() 
+    else: # Si num_fractions es 2, t1_pct se calcula
         t1_pct = 100.0 - t0_finest_agg_pct
-        st.session_state.t1_pct_input = t1_pct # Guardamos el calculado para consistencia
-
-    # Para depuración (opcional, puedes borrarlo una vez que funcione)
-    # st.write(f"DEBUG (antes de calc final): t0_finest_agg_pct = {t0_finest_agg_pct:.2f}%")
-    # st.write(f"DEBUG (antes de calc final): t1_pct (input/calc) = {t1_pct:.2f}%")
-    # st.write(f"DEBUG (antes de calc final): num_fractions = {st.session_state.num_fractions}")
-
+        st.session_state.t1_pct_input = t1_pct 
+    
 
     if st.button("Calcular Diseño Final de Mezcla"):
-        st.session_state.show_final_results = False # Resetear
+        st.session_state.show_final_results = False 
         try:
             # Recuperar valores del estado de la sesión
             water_A = st.session_state.water_A
             adjusted_cement_kg = st.session_state.adjusted_cement_kg
             cement_volume_difference = st.session_state.cement_volume_difference
-            # m0_sieve = st.session_state.m0_sieve # No usado directamente aquí, pero disponible
-            # m1_sieve = st.session_state.m1_sieve # No usado directamente aquí, pero disponible
-            num_fractions = st.session_state.num_fractions # Recuperamos num_fractions
+            num_fractions = st.session_state.num_fractions 
 
             # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
             if num_fractions == 3:
-                current_t1_pct = st.session_state.t1_pct_input # Usamos el valor del input directo
-            else: # num_fractions == 2
-                current_t1_pct = 100.0 - t0_finest_agg_pct # Se calcula t1 para 2 fracciones
+                current_t1_pct = st.session_state.t1_pct_input 
+            else: 
+                current_t1_pct = 100.0 - t0_finest_agg_pct 
             
             # Cálculo de proporciones de árido
             if num_fractions == 3:
-                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) # Usamos current_t1_pct (que ya es el valor del input)
+                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) 
                 if t2_pct < 0:
                      st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
                      t2_pct = 0.0
                 initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
                 st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
-            else: # num_fractions == 2
-                initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] # current_t1_pct ya está calculado para 2 fracciones
+            else: 
+                initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] 
                 st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
 
             # Aplicar correcciones
@@ -482,11 +478,8 @@ if st.session_state.show_t0_input:
                 if aggregate_volumes[0] < 0:
                     st.warning(f"Advertencia: El volumen de árido fino se volvió negativo ({aggregate_volumes[0]:.2f} L) tras el ajuste por cemento. Se ha limitado a 0.")
                     aggregate_volumes[0] = 0.0
-                # Si el primer árido se ajustó, re-normalizar el resto si es necesario para mantener la coherencia
-                # Opcional: redistribuir el exceso negativo entre los otros áridos si tiene sentido para tu modelo.
-                # Por ahora, simplemente se limita a 0.
 
-            actual_total_agg_vol = sum(aggregate_volumes) # Recalculamos el total después del ajuste
+            actual_total_agg_vol = sum(aggregate_volumes) 
             
             st.subheader("Proporciones Finales de Mezcla (por m³)")
             st.write(f"**Agua:** {water_A:.2f} litros")
@@ -538,7 +531,7 @@ if st.session_state.get("show_final_results", False):
     componentes = ["Agua", "Cemento", "Aire ocluido"] \
                   + [f"Árido {i+1} ({agg_percents[i]:.1f}%)" for i in range(n_agg)]
     volumenes   = [water_l, cement_l, air_l] + agg_vols
-    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6] * n_agg # Densidad del árido puede ser una entrada si es variable
+    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6] * n_agg 
     pesos       = [v * d for v, d in zip(volumenes, densidades)]
 
     df_comp = pd.DataFrame({
