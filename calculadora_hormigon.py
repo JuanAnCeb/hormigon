@@ -61,23 +61,23 @@ LIMITS_DATA_DICT = {
     "X0": {"mass_min_cement": "150", "mass_max_cement": "", "mass_max_a_c": "0.7", "reinforced_min_cement": "180", "reinforced_max_cement": "", "reinforced_max_a_c": "0.65", "prestressed_min_cement": "200", "prestressed_max_cement": "", "prestressed_max_a_c": "0.6"},
     "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "prestressed_max_cement": "", "prestressed_max_a_c": "0.5"},
     "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "prestressed_max_cement": "", "prestressed_max_a_c": "0.45"},
-    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "prestressed_max_cement": "", "prestressed_max_a_c": "0.4"},
-    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "prestressed_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "prestressed_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "prestressed_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "prestressed_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "prestressed_max_cement": "", "prestressed_max_a_c": "0.26"},
-    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "reinforced_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "prestressed_max_cement": "", "prestressed_max_a_c": "0.25"},
-    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "prestressed_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "prestressed_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "prestressed_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "prestressed_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "prestressed_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "prestressed_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "prestressed_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "prestressed_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "prestressed_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "prestressed_max_cement": "", "prestressed_max_a_c": "0.26"},
+    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "mass_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "mass_max_cement": "", "prestressed_max_a_c": "0.4"},
+    "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "mass_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
+    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "mass_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "mass_max_cement": "", "prestressed_max_a_c": "0.25"},
+    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "mass_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
 }
 
 # --- Funciones de Ayuda (Copiadas de penagemini3.py y adaptadas para Streamlit) ---
@@ -278,6 +278,8 @@ if 'show_t0_input' not in st.session_state:
     st.session_state.show_t0_input = False
 if 'show_final_results' not in st.session_state:
     st.session_state.show_final_results = False
+if 't1_pct_input' not in st.session_state: # Inicializar t1_pct_input para evitar KeyError si no se muestra
+    st.session_state.t1_pct_input = 25.0 # Valor por defecto
 
 # Columna para inputs generales
 col1, col2 = st.columns(2)
@@ -396,7 +398,8 @@ if st.session_state.show_t0_input:
     )
 
     # Ahora, mostramos t1 solo si num_fractions es 3
-    t1_pct = None # Inicializamos t1_pct
+    # Inicializamos t1_pct con un valor por defecto seguro
+    t1_pct = 0.0 
     if st.session_state.num_fractions == 3: # Usamos el valor guardado en session_state
         st.image(
             "assets/t1_instructions.png", # Asegúrate de tener esta imagen si quieres mostrarla
@@ -406,13 +409,20 @@ if st.session_state.show_t0_input:
         t1_pct = st.number_input(
             "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
             min_value=0.0, max_value=100.0, value=25.0, step=1.0,
-            key="t1_input"
+            key="t1_input" # Asegúrate de que esta key sea única
         )
+        # Actualizamos el estado de la sesión con el valor del input t1_pct
+        st.session_state.t1_pct_input = t1_pct
         
         # Añadir un control para que t0 + t1 no exceda 100% antes de continuar
         if t0_finest_agg_pct + t1_pct > 100.0:
             st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
             st.stop() # Detener la ejecución hasta que el usuario corrija la entrada
+    else: # Si num_fractions es 2, nos aseguramos de que t1_pct no se esté usando como input
+        # Calculamos t1_pct para 2 fracciones
+        t1_pct = 100.0 - t0_finest_agg_pct
+        st.session_state.t1_pct_input = t1_pct # Guardamos el calculado para consistencia si es necesario.
+
 
     if st.button("Calcular Diseño Final de Mezcla"):
         st.session_state.show_final_results = False # Resetear
@@ -425,15 +435,23 @@ if st.session_state.show_t0_input:
             m1_sieve = st.session_state.m1_sieve
             num_fractions = st.session_state.num_fractions # Recuperamos num_fractions
 
+            # Recuperar el valor correcto de t1_pct: del input si es 3 fracciones, o calculado si es 2
+            # Aquí es donde estaba el posible problema. Aseguramos que t1_pct se obtenga correctamente.
+            if num_fractions == 3:
+                current_t1_pct = st.session_state.t1_pct_input
+            else: # num_fractions == 2
+                current_t1_pct = 100.0 - t0_finest_agg_pct
+                
             # Cálculo de proporciones de árido
             if num_fractions == 3:
-                # t1_pct ya es un input, no se calcula aquí
-                t2_pct = 100.0 - (t0_finest_agg_pct + t1_pct)
-                initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, t1_pct), max(0.0, t2_pct)]
+                t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) # Usamos current_t1_pct
+                if t2_pct < 0:
+                     st.warning(f"Advertencia: La suma de t0 y t1 excede el 100%. t2 se ha ajustado a 0. Ajuste t0 o t1.")
+                     t2_pct = 0.0
+                initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
                 st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
             else: # num_fractions == 2
-                t1_pct_calculated = 100.0 - t0_finest_agg_pct
-                initial_t_fractions = [t0_finest_agg_pct, t1_pct_calculated] # Renombrado para claridad
+                initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] # current_t1_pct ya está calculado para 2 fracciones
                 st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
 
             # Aplicar correcciones
@@ -465,8 +483,8 @@ if st.session_state.show_t0_input:
             st.write(f"**Agua:** {water_A:.2f} litros")
             st.write(f"**Cemento:** {adjusted_cement_kg:.2f} kg ({Vc:.2f} litros)")
             st.write(f"**Porcentaje Granulométrico de Árido más fino (t0):** {t0_finest_agg_pct:.2f}%")
-            if num_fractions == 3 and t1_pct is not None:
-                st.write(f"**Porcentaje Granulométrico de Árido intermedio (t1):** {t1_pct:.2f}%")
+            if num_fractions == 3: # Solo muestra t1 si hay 3 fracciones
+                st.write(f"**Porcentaje Granulométrico de Árido intermedio (t1):** {current_t1_pct:.2f}%")
             st.markdown("---")
 
             for i, vol in enumerate(aggregate_volumes):
@@ -482,9 +500,10 @@ if st.session_state.show_t0_input:
                 st.warning("Advertencia: El volumen total calculado se desvía significativamente de 1025 L/m³. Por favor, verifique las entradas y los cálculos.")
 
             # Recalcular y ajustar aggregate_volumes antes de guardarlo en session_state
-            aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
-            if cement_volume_difference > 0 and aggregate_volumes:
-                aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
+            # Esta parte ya la tienes y debería estar bien.
+            # aggregate_volumes = [(t_pct / 100.0) * V_aridos for t_pct in final_aggregate_percentages]
+            # if cement_volume_difference > 0 and aggregate_volumes:
+            #     aggregate_volumes[0] = max(0.0, aggregate_volumes[0] - cement_volume_difference)
 
             # Guardar en session_state para las gráficas
             st.session_state.aggregate_volumes = aggregate_volumes
