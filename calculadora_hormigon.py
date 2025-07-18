@@ -479,39 +479,30 @@ if st.session_state.show_t0_input:
 
 # --- al final de calculadora_hormigon.py ---
 
-import plotly.express as px  # asegúrate de tener esto al inicio del archivo
-
 # ——— Sección de gráficas ———
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
-    # Recuperar volúmenes y pesos
-    water_l   = st.session_state.get("water_A", 0.0)
-    cement_kg = st.session_state.get("adjusted_cement_kg", 0.0)
+    # Datos básicos
+    water_l   = st.session_state.water_A
+    cement_kg = st.session_state.adjusted_cement_kg
     cement_l  = cement_kg / CEMENT_DENSITY
-    air_pct   = st.session_state.get("air_pct", 0.0)
+    air_pct   = st.session_state.air_pct
     air_l     = (air_pct / 100.0) * 1025.0
-    agg_vols  = st.session_state.get("aggregate_volumes", [])
 
-    # Pedir densidades para cada árido
-    st.markdown("#### Densidades de los áridos")
-    user_densities = []
-    for i, vol in enumerate(agg_vols, start=1):
-        dens = st.number_input(
-            f"Densidad árido {i} (kg/L)",
-            min_value=0.0,
-            value=2.6,
-            step=0.01,
-            key=f"density_agg_{i}"
-        )
-        user_densities.append(dens)
+    # Volúmenes y proporciones de áridos
+    agg_vols          = st.session_state.aggregate_volumes              # [L]
+    agg_percents      = st.session_state.final_aggregate_percentages    # [%]
+    n_agg             = len(agg_vols)
 
-    # Armar DataFrame
-    componentes = ["Agua", "Cemento", "Aire ocluido"] + [f"Árido {i}" for i in range(1, len(agg_vols)+1)]
+    # Construcción de labels dinámicos
+    componentes = ["Agua", "Cemento", "Aire ocluido"] \
+                  + [f"Árido {i+1} ({agg_percents[i]:.1f}%)" for i in range(n_agg)]
     volumenes   = [water_l, cement_l, air_l] + agg_vols
-    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + user_densities
-    pesos       = [v * d for v, d in zip(volumenes, densidades)]
+    densidades  = [1.0, CEMENT_DENSITY, 0.0012] + [2.6]*n_agg   # 2.6 por defecto
+    pesos       = [v*d for v, d in zip(volumenes, densidades)]
 
+    # DataFrame
     df_comp = pd.DataFrame({
         "Componente":      componentes,
         "Volumen (L)":     volumenes,
@@ -519,16 +510,17 @@ if st.session_state.get("show_final_results", False):
         "Peso (kg)":       pesos
     }).set_index("Componente")
 
+    # Mostrar tabla
     st.dataframe(df_comp)
 
-    # Gráfico de barras agrupadas
+    # Gráfico de barras agrupadas: Volumen vs Peso
     fig = px.bar(
         df_comp.reset_index(),
         x="Componente",
         y=["Volumen (L)", "Peso (kg)"],
         barmode="group",
         title="Volumen y Peso de cada componente",
-        text_auto=".2f"
+        text_auto=".1f"
     )
     fig.update_layout(
         yaxis_title="Valor",
@@ -538,7 +530,5 @@ if st.session_state.get("show_final_results", False):
         uniformtext_mode="hide"
     )
     st.plotly_chart(fig, use_container_width=True)
-
 else:
     st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
-
