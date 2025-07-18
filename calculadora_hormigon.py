@@ -130,7 +130,7 @@ def calc_Z_and_wc(fcm, aggregate_type):
     wc = 1 / Z
     return Z, wc
 
-def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_wc_norm, max_cement_norm):
+def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_a_c_norm, max_cement_norm):
     """
     Ajusta el contenido de cemento según las normativas y límites.
     """
@@ -138,11 +138,11 @@ def adjust_cement(water_A, initial_cement_kg, initial_wc, min_cement_norm, max_w
     adjustment_message = ""
 
     # Ajuste por relación w/c máxima
-    if initial_wc > max_wc_norm:
-        required_cement_for_wc = water_A / max_wc_norm
+    if initial_wc > max_a_c_norm:
+        required_cement_for_wc = water_A / max_a_c_norm
         if required_cement_for_wc > adjusted_cement_kg:
             adjusted_cement_kg = required_cement_for_wc
-            adjustment_message += f"Cemento aumentado a {adjusted_cement_kg:.2f} kg/m³ para cumplir el límite máximo de w/c de {max_wc_norm:.2f}. "
+            adjustment_message += f"Cemento aumentado a {adjusted_cement_kg:.2f} kg/m³ para cumplir el límite máximo de w/c de {max_a_c_norm:.2f}. "
 
     # Ajuste por contenido mínimo de cemento
     if adjusted_cement_kg < min_cement_norm:
@@ -322,10 +322,10 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
         st.session_state.max_a_c_norm = max_a_c_norm
 
         st.write(f"Límites para {exposure_class} (colocación {placing_type}):")
-        st.write(f"  - Cemento Mínimo: {min_cement_norm} kg/m³")
+        st.write(f"  - Cemento Mínimo: {min_cement_norm} kg/m³")
         if max_cement_norm is not None:
-            st.write(f"  - Cemento Máximo: {max_cement_norm} kg/m³")
-        st.write(f"  - Relación w/c Máxima: {max_a_c_norm}")
+            st.write(f"  - Cemento Máximo: {max_cement_norm} kg/m³")
+        st.write(f"  - Relación w/c Máxima: {max_a_c_norm}")
 
         # 3. Calcular la demanda de agua base A (l/m³)
         st.subheader("Cálculo de Agua y Cemento")
@@ -378,9 +378,6 @@ if st.button("Calcular Módulos de Finura y Proporciones de Agua/Cemento"):
         st.session_state.show_t0_input = False # Asegurarse de que no se muestre la siguiente sección si hay error
 
 # Sección para la entrada de t0 y el cálculo final, mostrada condicionalmente
-# … código anterior …
-
-# Sección para la entrada de t0 y el cálculo final, mostrada condicionalmente
 if st.session_state.show_t0_input:
     st.subheader("--- Proporciones de Árido y Cálculo Final ---")
 
@@ -397,9 +394,21 @@ if st.session_state.show_t0_input:
         key="t0_input"
     )
 
-    if st.button("Calcular Diseño Final de Mezcla"):
-        # … resto de tu lógica …
+    t1_pct = None # Initialize t1_pct
+    if num_fractions == 3:
+        st.image(
+            "assets/t1_instructions.png", # You'd need an image for t1 instructions if you want one
+            caption="🛈 El valor de t1 es el % de la segunda fracción más fina sobre el volumen total de áridos.",
+            use_column_width=True
+        )
+        t1_pct = st.number_input(
+            "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
+            min_value=0.0, max_value=100.0, value=25.0, step=1.0, # Default value for t1
+            key="t1_input"
+        )
 
+
+    if st.button("Calcular Diseño Final de Mezcla"):
         st.session_state.show_final_results = False # Resetear
         try:
             # Recuperar valores del estado de la sesión
@@ -411,17 +420,13 @@ if st.session_state.show_t0_input:
 
             # Cálculo de proporciones de árido
             if num_fractions == 3:
-                if m1_sieve is None:
-                    raise ValueError("No se puede calcular t1: El análisis granulométrico no proporcionó una segunda columna de árido (% retenido A3 no estaba presente). Asegúrese de introducir 4 columnas para 3 fracciones.")
-                if m1_sieve == 0:
-                    raise ValueError("No se puede calcular t1: El módulo de finura m1 es cero, lo que llevaría a una división por cero.")
-                t1_pct = t0_finest_agg_pct * (100 - m1_sieve) / m1_sieve
+                # t1_pct is now an input
                 if (t0_finest_agg_pct + t1_pct) > 100.0:
-                    st.warning(f"Advertencia: La suma calculada de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Ajustando t1 proporcionalmente.")
-                    t1_pct = 100.0 - t0_finest_agg_pct
+                    st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
+                    st.stop() # Stop execution until user corrects input
                 t2_pct = 100.0 - (t0_finest_agg_pct + t1_pct)
                 initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, t1_pct), max(0.0, t2_pct)]
-                st.write(f"**Porcentajes iniciales de árido (t0, t1, t2 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
+                st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
             else: # num_fractions == 2
                 t1_pct = 100.0 - t0_finest_agg_pct
                 initial_t_fractions = [t0_finest_agg_pct, t1_pct]
@@ -456,14 +461,16 @@ if st.session_state.show_t0_input:
             st.write(f"**Agua:** {water_A:.2f} litros")
             st.write(f"**Cemento:** {adjusted_cement_kg:.2f} kg ({Vc:.2f} litros)")
             st.write(f"**Porcentaje Granulométrico de Cemento (t0):** {t0_finest_agg_pct:.2f}%")
+            if num_fractions == 3 and t1_pct is not None:
+                st.write(f"**Porcentaje Granulométrico de Cemento (t1):** {t1_pct:.2f}%")
             st.markdown("---")
 
             for i, vol in enumerate(aggregate_volumes):
                 st.write(f"**Fracción de Árido {i+1}:**")
-                st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
-                st.write(f"  - Volumen: {vol:.2f} litros")
+                st.write(f"  - Porcentaje (relativo a la porción total de árido): {final_aggregate_percentages[i]:.2f}%")
+                st.write(f"  - Volumen: {vol:.2f} litros")
 
-                       # Comprobación final del volumen
+                        # Comprobación final del volumen
             total_calculated_volume = water_A + Vc + actual_total_agg_vol
             st.subheader("Comprobación de Volumen Total")
             st.write(f"**Volumen total calculado:** {total_calculated_volume:.2f} litros/m³ (debería ser aproximadamente 1025 L/m³)")
@@ -486,26 +493,24 @@ if st.session_state.show_t0_input:
             st.error(f"Ocurrió un error inesperado durante el cálculo final: {e}")
 
 
-
-
 # --- al final de calculadora_hormigon.py ---
 
 # ——— Sección de gráficas ———
-import plotly.express as px 
+import plotly.express as px
 if st.session_state.get("show_final_results", False):
     st.subheader("📊 Composición de la mezcla")
 
     # Datos básicos (ya inicializados)
-    water_l   = st.session_state.get("water_A", 0.0)
+    water_l    = st.session_state.get("water_A", 0.0)
     cement_kg = st.session_state.get("adjusted_cement_kg", 0.0)
     cement_l  = cement_kg / CEMENT_DENSITY
-    air_pct   = st.session_state.get("air_pct", 0.0)
-    air_l     = (air_pct / 100.0) * 1025.0
+    air_pct    = st.session_state.get("air_pct", 0.0)
+    air_l      = (air_pct / 100.0) * 1025.0
 
     # Áridos
-    agg_vols     = st.session_state.get("aggregate_volumes", [])
+    agg_vols      = st.session_state.get("aggregate_volumes", [])
     agg_percents = st.session_state.get("final_aggregate_percentages", [])
-    n_agg        = len(agg_vols)
+    n_agg         = len(agg_vols)
 
     # Etiquetas con % granular
     componentes = ["Agua", "Cemento", "Aire ocluido"] \
@@ -532,5 +537,7 @@ if st.session_state.get("show_final_results", False):
         text_auto=".1f"
     )
     st.plotly_chart(fig, use_container_width=True)
+else:
+    st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
 else:
     st.info("Ejecuta primero el cálculo final para ver aquí la composición de la mezcla.")
