@@ -59,9 +59,9 @@ DEFAULT_SIEVE_DATA_3_FRACTIONS_STR = """80,0,0,0
 # --- Datos de CSV Integrados ---
 LIMITS_DATA_DICT = {
     "X0": {"mass_min_cement": "150", "mass_max_cement": "", "mass_max_a_c": "0.7", "reinforced_min_cement": "180", "reinforced_max_cement": "", "reinforced_max_a_c": "0.65", "prestressed_min_cement": "200", "prestressed_max_cement": "", "prestressed_max_a_c": "0.6"},
-    "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "prestressed_max_cement": "", "prestressed_max_a_c": "0.5"},
-    "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "prestressed_max_cement": "", "prestressed_max_a_c": "0.45"},
-    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4"},
+    "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "reinforced_max_cement": "", "prestressed_max_a_c": "0.5"},
+    "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "reinforced_max_cement": "", "prestressed_max_a_c": "0.45"},
+    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "reinforced_max_cement": "", "prestressed_max_a_c": "0.4"},
     "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
     "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
@@ -75,9 +75,9 @@ LIMITS_DATA_DICT = {
     "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
+    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "reinforced_max_cement": "", "prestressed_max_a_c": "0.26"},
 }
 
 # --- Funciones de Ayuda ---
@@ -320,8 +320,13 @@ t0_finest_agg_pct = st.number_input(
     key="t0_input"
 )
 
-# Lógica para mostrar t1_pct_input SÓLO si num_fractions es 3
+# --- INICIO DE LA LÓGICA CLAVE PARA t1 ---
+# Esta es la parte que controla si el input t1 aparece o no.
+# Se basa en el valor de st.session_state.num_fractions que se actualiza
+# cada vez que el usuario cambia el selectbox "Número de fracciones de árido".
+
 t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
+
 if st.session_state.num_fractions == 3: 
     st.image(
         "assets/t1_instructions.png", 
@@ -330,17 +335,24 @@ if st.session_state.num_fractions == 3:
     )
     t1_pct = st.number_input(
         "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
-        min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, # Usa el valor guardado
+        min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, 
         key="t1_input" 
     )
     st.session_state.t1_pct_input = t1_pct # Actualiza el valor en session_state
     
+    # Validación para 3 fracciones
     if t0_finest_agg_pct + t1_pct > 100.0:
         st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
-        st.stop() 
+        st.stop() # Detiene la ejecución hasta que el usuario corrija
 else: # Si num_fractions es 2, t1_pct se calcula
     t1_pct = 100.0 - t0_finest_agg_pct
     st.session_state.t1_pct_input = t1_pct # Guarda el calculado para consistencia
+# --- FIN DE LA LÓGICA CLAVE PARA t1 ---
+
+# --- Mensaje de depuración para que puedas ver el estado ---
+st.info(f"DEBUG: Número de fracciones seleccionado: {st.session_state.num_fractions}")
+# --- Fin del mensaje de depuración ---
+
 
 # --- Botón para iniciar el cálculo principal ---
 if st.button("Calcular Diseño Final de Mezcla"):
@@ -381,10 +393,8 @@ if st.button("Calcular Diseño Final de Mezcla"):
         st.session_state.m1_sieve = m1_sieve
 
         # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
-        if st.session_state.num_fractions == 3:
-            current_t1_pct = st.session_state.t1_pct_input # Usamos el valor del input directo
-        else: 
-            current_t1_pct = 100.0 - t0_finest_agg_pct # Se calcula t1 para 2 fracciones
+        # Este valor ya se ha determinado en la sección de inputs de t0/t1 más arriba
+        current_t1_pct = st.session_state.t1_pct_input 
         
         # Cálculo de proporciones de árido
         if st.session_state.num_fractions == 3:
