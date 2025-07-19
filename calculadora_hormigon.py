@@ -325,9 +325,9 @@ st.subheader("Por favor, proporcione los siguientes parámetros:")
 # Inicializar estados de sesión
 if 'show_final_results' not in st.session_state:
     st.session_state.show_final_results = False
-if 't1_pct_input' not in st.session_state:
-    st.session_state.t1_pct_input = 25.0
-if 'num_fractions' not in st.session_state: # Inicializar si no existe
+if 'ta1_input' not in st.session_state: # Cambiado de t1_pct_input a ta1_input
+    st.session_state.ta1_input = 25.0 # Valor por defecto para ta1
+if 'num_fractions' not in st.session_state:
     st.session_state.num_fractions = 2 # Valor por defecto
 
 # Columna para inputs generales
@@ -340,7 +340,6 @@ with col1:
     D = st.selectbox("Tamaño máximo del árido en mm", [20, 40, 80], index=2)
 
 with col2:
-    # Este selectbox controla directamente la visibilidad de t1 y el default de sieve data
     st.session_state.num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
     
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
@@ -379,7 +378,7 @@ else:
     st.success(f"**Módulo de Finura $m_0$ (de la fracción más fina):** {m0_sieve:.2f}")
     if st.session_state.num_fractions == 3:
         st.success(f"**Módulo de Finura $m_1$ (de la segunda fracción):** {m1_sieve:.2f}")
-    st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y t1 de los áridos.")
+    st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y ta1 de los áridos.") # Mensaje actualizado
 
 
 # --- Única IMAGEN DESEADA: t0_instructions.png (ahora usando st.image) ---
@@ -388,7 +387,7 @@ t0_image_path = "assets/t0_instructions.png"
 
 st.image(
     t0_image_path,
-    caption="El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos. Utilice esta imagen de referencia para ajustar los valores de t0 y t1.",
+    caption="El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos. Utilice esta imagen de referencia para ajustar los valores de t0 y ta1.", # Caption actualizado
     width=600 # Puedes ajustar el ancho si es necesario
 )
 
@@ -398,29 +397,49 @@ t0_finest_agg_pct = st.number_input(
     key="t0_input"
 )
 
-# --- INICIO DE LA LÓGICA CLAVE PARA t1 ---
-t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
+# --- INICIO DE LA LÓGICA CLAVE PARA ta1 y t1 ---
+ta1_input_value = 0.0 # Inicializamos ta1_input_value con un valor por defecto
+t1_calculated_value = 0.0 # Inicializamos t1_calculated_value
 
 if st.session_state.num_fractions == 3: 
-    st.write("Por favor, introduce el porcentaje t1 para la segunda fracción de árido.") 
-    t1_pct = st.number_input(
-        "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
-        min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, 
-        key="t1_input" 
+    st.write("Por favor, introduce el porcentaje ta1 para la segunda fracción de árido.") 
+    ta1_input_value = st.number_input( # Cambiado a ta1_input_value
+        "Porcentaje ta1 (relación de áridos) para la segunda fracción de árido", # Texto de la etiqueta actualizado
+        min_value=0.0, value=st.session_state.ta1_input, step=1.0, 
+        key="ta1_input" # Cambiado a ta1_input
     )
-    st.session_state.t1_pct_input = t1_pct # Actualiza el valor en session_state
-    
-    # Validación para 3 fracciones
-    if t0_finest_agg_pct + t1_pct > 100.0:
-        st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({t1_pct:.2f}%) excede el 100%. Por favor, ajuste t0 o t1.")
+    st.session_state.ta1_input = ta1_input_value # Actualiza el valor en session_state
+
+    # CÁLCULO DE t1 USANDO LA NUEVA FÓRMULA
+    if ta1_input_value > 0: # Evitar división por cero
+        t1_calculated_value = t0_finest_agg_pct * ((100 - ta1_input_value) / ta1_input_value)
+    else:
+        st.warning("El valor de ta1 debe ser mayor que 0 para calcular t1.")
+        t1_calculated_value = 0.0 # O algún otro valor por defecto o lanzar error
+        st.stop() # Detener ejecución si ta1 es 0 o negativo, ya que la división por cero no tiene sentido aquí.
+
+    st.info(f"El valor de t1 calculado es: {t1_calculated_value:.2f}%")
+
+    # Validación para 3 fracciones (con el nuevo t1 calculado)
+    if t0_finest_agg_pct + t1_calculated_value > 100.0:
+        st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 calculado ({t1_calculated_value:.2f}%) excede el 100%. Por favor, ajuste t0 o ta1.")
         st.stop() # Detiene la ejecución hasta que el usuario corrija
-else: # Si num_fractions es 2, t1_pct se calcula
-    t1_pct = 100.0 - t0_finest_agg_pct
-    st.session_state.t1_pct_input = t1_pct # Guarda el calculado para consistencia
-# --- FIN DE LA LÓGICA CLAVE PARA t1 ---
+
+else: # Si num_fractions es 2, t1_pct se calcula como antes
+    t1_calculated_value = 100.0 - t0_finest_agg_pct
+    st.session_state.ta1_input = 0.0 # No aplicable para 2 fracciones, se podría resetear o dejarlo.
+
+# Asignar el valor calculado de t1 a la variable que se usará en los cálculos posteriores
+t1_pct_for_calculations = t1_calculated_value 
+# --- FIN DE LA LÓGICA CLAVE PARA ta1 y t1 ---
+
 
 # --- Mensaje de depuración para que puedas ver el estado ---
 st.info(f"DEBUG: Número de fracciones seleccionado: {st.session_state.num_fractions}")
+st.info(f"DEBUG: Valor de t0: {t0_finest_agg_pct:.2f}%")
+if st.session_state.num_fractions == 3:
+    st.info(f"DEBUG: Valor de ta1 (input): {ta1_input_value:.2f}")
+st.info(f"DEBUG: Valor final de t1 (para cálculos): {t1_pct_for_calculations:.2f}%")
 # --- Fin del mensaje de depuración ---
 
 
@@ -461,21 +480,20 @@ if st.button("Calcular Diseño Final de Mezcla"):
         m0_sieve = st.session_state.m0_sieve
         m1_sieve = st.session_state.m1_sieve
 
-
-        # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
-        current_t1_pct = st.session_state.t1_pct_input 
+        # Usar el t1 calculado
+        current_t1_pct = t1_pct_for_calculations
         
         # Cálculo de proporciones de árido
         if st.session_state.num_fractions == 3:
             t2_pct = 100.0 - (t0_finest_agg_pct + current_t1_pct) 
             if t2_pct < 0:
-                 st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
+                 st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 calculado ({current_t1_pct:.2f}%) excede el 100%. La tercera fracción (t2) se ha ajustado a 0%.")
                  t2_pct = 0.0
             initial_t_fractions = [max(0.0, t0_finest_agg_pct), max(0.0, current_t1_pct), max(0.0, t2_pct)]
             st.write(f"**Porcentajes iniciales de árido (t0, t1, t2):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
         else: 
             initial_t_fractions = [t0_finest_agg_pct, current_t1_pct] 
-            st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
+            st.write(f"**Porcentajes iniciales de árido (t0, t1 calculado):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
 
         # Aplicar correcciones
         corrected_t_fractions = apply_correcciones(initial_t_fractions, aggregate_type, vibrated, placing_type, air_pct)
