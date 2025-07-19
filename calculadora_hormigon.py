@@ -382,7 +382,7 @@ else:
     st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y t1 de los áridos.")
 
 
-# --- IMAGEN AÑADIDA EN LUGAR DEL TEXTO DE FÓRMULAS ---
+# --- Única IMAGEN DESEADA: t0_instructions.png ---
 st.subheader("--- Proporciones de Árido ---")
 t0_image_path = "assets/t0_instructions.png" 
 
@@ -397,11 +397,12 @@ t0_finest_agg_pct = st.number_input(
     min_value=0.0, max_value=100.0, value=65.0, step=1.0,
     key="t0_input"
 )
+
 # --- INICIO DE LA LÓGICA CLAVE PARA t1 ---
 t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
 
 if st.session_state.num_fractions == 3: 
-    st.write("Por favor, introduce el porcentaje t1 para la segunda fracción de árido.") # Mensaje de texto en su lugar
+    st.write("Por favor, introduce el porcentaje t1 para la segunda fracción de árido.") 
     t1_pct = st.number_input(
         "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
         min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, 
