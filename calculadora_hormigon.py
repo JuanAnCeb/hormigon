@@ -382,15 +382,15 @@ else:
     st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y t1 de los áridos.")
 
 
-# --- Única IMAGEN DESEADA: t0_instructions.png ---
+# --- Única IMAGEN DESEADA: t0_instructions.png (ahora usando st.image) ---
 st.subheader("--- Proporciones de Árido ---")
 t0_image_path = "assets/t0_instructions.png" 
 
-st.markdown(
-    f"<div style='text-align: center;'><img src='{t0_image_path}' width='600'></div>", # Ancho ajustado para mejor visibilidad
-    unsafe_allow_html=True
+st.image(
+    t0_image_path,
+    caption="El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos. Utilice esta imagen de referencia para ajustar los valores de t0 y t1.",
+    width=600 # Puedes ajustar el ancho si es necesario
 )
-st.caption("🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos. Utilice esta imagen de referencia para ajustar los valores de t0 y t1.")
 
 t0_finest_agg_pct = st.number_input(
     "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
