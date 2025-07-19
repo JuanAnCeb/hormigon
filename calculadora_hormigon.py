@@ -67,7 +67,7 @@ LIMITS_DATA_DICT = {
     "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "reinforced_max_cement": "", "prestressed_max_a_c": "0.26"},
-    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "mass_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "mass_max_cement": "", "prestressed_max_a_c": "0.25"},
+    "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "reinforced_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "mass_max_cement": "", "prestressed_max_a_c": "0.25"},
     "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
     "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
@@ -75,9 +75,9 @@ LIMITS_DATA_DICT = {
     "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
+    "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "reinforced_max_cement": "", "prestressed_max_a_c": "0.26"},
 }
 
 # --- Funciones de Ayuda ---
@@ -164,7 +164,7 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
     Calcula los módulos de finura (m0, m1) a partir de los datos del tamiz.
     """
     sieve_data = []
-    if not sieve_data_str.strip():
+    if not sieve_data_str.strip(): # If empty, use default
         default_data = DEFAULT_SIEVE_DATA_2_FRACTIONS_STR if num_fractions == 2 else DEFAULT_SIEVE_DATA_3_FRACTIONS_STR
         sio = io.StringIO(default_data)
         df = pd.read_csv(sio, header=None)
@@ -179,85 +179,138 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
 
     expected_cols = 3 if num_fractions == 2 else 4
     if not sieve_data or len(sieve_data[0]) != expected_cols:
-        raise ValueError(f"Número incorrecto de columnas en los datos de tamices. Se esperaban {expected_cols} para {num_fractions} fracciones. Asegúrese de que los datos de tamices están bien formateados.")
+        raise ValueError(f"Número incorrecto de columnas en los datos de tamices ({len(sieve_data[0])}). Se esperaban {expected_cols} para {num_fractions} fracciones. Asegúrese de que los datos de tamices están bien formateados (Tamiz_mm, %ret A1, %ret A2 [, %ret A3]).")
 
     sum_retained_A2 = 0.0
     sum_retained_A3 = 0.0
-    has_A3_column_in_data = (len(sieve_data[0]) == 4) if sieve_data else False
-
-    for row in sieve_data:
-        try:
-            sum_retained_A2 += float(row[2])
-            if has_A3_column_in_data:
-                sum_retained_A3 += float(row[3])
-        except ValueError:
-            raise ValueError("Los datos de porcentaje retenido en la tabla de tamices deben ser números válidos.")
     
-    m0, m1 = None, None
+    # Check if the data actually has the expected columns for computation
+    # The first column is sieve size, so actual data columns start from index 1.
+    # For m0 (finest), we need the last aggregate column, which is index 2 for 2 fractions (A2)
+    # and index 3 for 3 fractions (A3).
+    # For m1 (second finest), we need the second to last aggregate column, which is index 2 for 3 fractions (A2).
+    
     if num_fractions == 2:
+        # For 2 fractions, m0 is from A2 (column index 2)
+        if len(sieve_data[0]) < 3:
+            raise ValueError("Para 2 fracciones, se esperaba la columna '% que retiene A2'.")
+        for row in sieve_data:
+            try:
+                sum_retained_A2 += float(row[2]) # % retenido A2
+            except (ValueError, IndexError):
+                raise ValueError("Los datos de porcentaje retenido para A2 en la tabla de tamices deben ser números válidos y la columna debe existir.")
         m0 = sum_retained_A2 / 100.0
+        m1 = None # Not applicable for 2 fractions
+
     elif num_fractions == 3:
-        if has_A3_column_in_data:
-            m0 = sum_retained_A3 / 100.0
-            m1 = sum_retained_A2 / 100.0
-        else:
-            raise ValueError("Para 3 fracciones, se esperaba la columna '% que retiene A3' para calcular m0 y m1. Asegúrese de que los datos de tamices tienen 4 columnas.")
+        # For 3 fractions, m0 is from A3 (column index 3) and m1 is from A2 (column index 2)
+        if len(sieve_data[0]) < 4:
+            raise ValueError("Para 3 fracciones, se esperaba la columna '% que retiene A3'.")
+        for row in sieve_data:
+            try:
+                sum_retained_A2 += float(row[2]) # % retenido A2
+                sum_retained_A3 += float(row[3]) # % retenido A3
+            except (ValueError, IndexError):
+                raise ValueError("Los datos de porcentaje retenido para A2 y A3 en la tabla de tamices deben ser números válidos y las columnas deben existir.")
+        m0 = sum_retained_A3 / 100.0
+        m1 = sum_retained_A2 / 100.0
             
     return m0, m1
+
 
 def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_pct):
     """
     Aplica correcciones a los porcentajes de las fracciones de árido.
     """
     corrected_t = list(t_fractions)
-    if len(corrected_t) < 2: return corrected_t 
+    if len(corrected_t) == 0: return [] 
+
+    # Normalizar antes de aplicar bonificaciones para asegurar que la distribución
+    # de la reducción sea equitativa en los otros porcentajes.
+    # Esto es crucial para que las restas no hagan porcentajes negativos
+    # si los valores iniciales son muy pequeños.
+    current_sum = sum(corrected_t)
+    if current_sum <= 0:
+        return [0.0] * len(corrected_t) # Evitar división por cero o resultados extraños
+
+    # Aplicar bonificaciones/deducciones y luego renormalizar
+    # Las bonificaciones se aplican a una fracción y se distribuyen proporcionalmente en las demás.
 
     # Corrección por tipo de árido (triturado)
     if aggregate_type == "crushed":
         bonus = 4.0
-        corrected_t[0] += bonus 
+        # Aumentar t0, y el resto se reduce proporcionalmente
+        corrected_t[0] += bonus
         if len(corrected_t) > 1:
-            remaining_sum = sum(corrected_t[1:])
+            remaining_sum = sum(corrected_t[1:]) # Suma de t1, t2...
             if remaining_sum > 0:
+                deduction_per_unit = bonus / remaining_sum
                 for i in range(1, len(corrected_t)):
-                    corrected_t[i] -= (bonus * (corrected_t[i] / remaining_sum))
-    
-    # Corrección por vibrado
+                    corrected_t[i] -= (corrected_t[i] * deduction_per_unit)
+            else: # Si el resto es 0, simplemente sumamos el bonus a t0 y el resto sigue en 0
+                pass
+
+
+    # Corrección por vibrado (afecta a la fracción más gruesa, la última)
     if vibrated:
         bonus = 4.0
-        corrected_t[-1] += bonus 
+        corrected_t[-1] += bonus # Aumenta la última fracción (más gruesa)
         if len(corrected_t) > 1:
-            remaining_sum = sum(corrected_t[:-1])
+            # Distribuir la reducción proporcionalmente en las fracciones restantes (todas menos la última)
+            remaining_sum = sum(corrected_t[:-1]) 
             if remaining_sum > 0:
-                for i in range(len(corrected_t) - 1):
-                    corrected_t[i] -= (bonus * (corrected_t[i] / remaining_sum))
+                deduction_per_unit = bonus / remaining_sum
+                for i in range(len(corrected_t) - 1): # Todas menos la última
+                    corrected_t[i] -= (corrected_t[i] * deduction_per_unit)
+            else: # Si el resto es 0, simplemente sumamos el bonus a la última fracción
+                pass
 
-    # Corrección por tipo de colocación (masa)
+    # Corrección por tipo de colocación (masa - afecta a la fracción más gruesa, la última)
     if placing_type == "mass":
         bonus = 3.0
-        corrected_t[-1] += bonus 
+        corrected_t[-1] += bonus # Aumenta la última fracción (más gruesa)
         if len(corrected_t) > 1:
+            # Distribuir la reducción proporcionalmente en las fracciones restantes (todas menos la última)
             remaining_sum = sum(corrected_t[:-1])
             if remaining_sum > 0:
-                for i in range(len(corrected_t) - 1):
-                    corrected_t[i] -= (bonus * (corrected_t[i] / remaining_sum))
+                deduction_per_unit = bonus / remaining_sum
+                for i in range(len(corrected_t) - 1): # Todas menos la última
+                    corrected_t[i] -= (corrected_t[i] * deduction_per_unit)
+            else: # Si el resto es 0, simplemente sumamos el bonus a la última fracción
+                pass
 
-    # Corrección por aire ocluido
+    # Corrección por aire ocluido (afecta a la fracción más fina, t0)
     if air_pct > 0:
         deduction = air_pct
         if len(corrected_t) > 0:
-            corrected_t[0] -= deduction 
+            corrected_t[0] -= deduction
+            # Si t0 se vuelve negativo, lo ajustamos a 0 y distribuimos la "deuda" en las otras fracciones
+            if corrected_t[0] < 0:
+                remaining_deduction = abs(corrected_t[0])
+                corrected_t[0] = 0.0
+                
+                if len(corrected_t) > 1:
+                    remaining_sum = sum(corrected_t[1:])
+                    if remaining_sum > 0:
+                        deduction_per_unit = remaining_deduction / remaining_sum
+                        for i in range(1, len(corrected_t)):
+                            corrected_t[i] -= (corrected_t[i] * deduction_per_unit)
 
-    # Asegurarse de que ningún porcentaje sea negativo
-    return [max(0, val) for val in corrected_t]
+
+    # Asegurarse de que ningún porcentaje sea negativo después de todas las correcciones
+    final_corrected_t = [max(0.0, val) for val in corrected_t]
+
+    return final_corrected_t
 
 def normalize_aggregate_percentages(t_fractions):
     """
     Normaliza los porcentajes de las fracciones de árido para que sumen 100%.
     """
     current_sum = sum(t_fractions)
-    if current_sum <= 0:
-        return [100.0 / len(t_fractions)] * len(t_fractions) if len(t_fractions) > 0 else []
+    if current_sum <= 0: # Evitar división por cero
+        if len(t_fractions) > 0:
+            return [100.0 / len(t_fractions)] * len(t_fractions)
+        return []
     return [(val / current_sum) * 100.0 for val in t_fractions]
 
 # --- Interfaz de Streamlit ---
@@ -274,6 +327,8 @@ if 'show_final_results' not in st.session_state:
     st.session_state.show_final_results = False
 if 't1_pct_input' not in st.session_state:
     st.session_state.t1_pct_input = 25.0
+if 'num_fractions' not in st.session_state: # Inicializar si no existe
+    st.session_state.num_fractions = 2 # Valor por defecto
 
 # Columna para inputs generales
 col1, col2 = st.columns(2)
@@ -285,7 +340,7 @@ with col1:
     D = st.selectbox("Tamaño máximo del árido en mm", [20, 40, 80], index=2)
 
 with col2:
-    # Este selectbox controla directamente la visibilidad de t1
+    # Este selectbox controla directamente la visibilidad de t1 y el default de sieve data
     st.session_state.num_fractions = st.selectbox("Número de fracciones de árido", [2, 3], index=0, help="3 fracciones requieren entrada de análisis granulométrico con 3 columnas de %retenido")
     
     placing_type = st.selectbox("Tipo de colocación", ["mass", "reinforced", "prestressed"], index=0)
@@ -298,27 +353,65 @@ with col2:
 
 st.subheader("--- Datos de Análisis Granulométrico ---")
 
-sieve_help_text = "Formato: Tamiz_mm,% retenido A1,% retenido A2[,% retenido A3]"
+sieve_help_text = "Formato: Tamiz_mm,% retenido A1,% retenido A2[,% retenido A3]. Por ejemplo: `80,0,0,0` (para 3 áridos) o `80,0,0` (para 2 áridos)."
 sieve_data_str = st.text_area(
-    "Tabla de análisis granulométrico (dejar en blanco para usar datos por defecto)", 
-    height=250, 
+    "Tabla de análisis granulométrico (dejar en blanco para usar datos por defecto)",
+    value=DEFAULT_SIEVE_DATA_2_FRACTIONS_STR if st.session_state.num_fractions == 2 else DEFAULT_SIEVE_DATA_3_FRACTIONS_STR,
+    height=250,
     help=sieve_help_text
 )
 
-# --- Sección de inputs para t0 y t1 (SIEMPRE VISIBLE, t1 CONDICIONAL) ---
+# Calcular y mostrar m0, m1 dinámicamente
+m0_sieve = None
+m1_sieve = None
+sieve_calc_error = None
+
+try:
+    m0_sieve, m1_sieve = compute_fineness_modules_from_sieve(sieve_data_str, st.session_state.num_fractions)
+    st.session_state.m0_sieve = m0_sieve # Guardar en session_state para uso posterior
+    st.session_state.m1_sieve = m1_sieve # Guardar en session_state para uso posterior
+except ValueError as e:
+    sieve_calc_error = f"Error en el análisis granulométrico: {e}"
+
+if sieve_calc_error:
+    st.error(sieve_calc_error)
+else:
+    st.success(f"**Módulo de Finura $m_0$ (de la fracción más fina):** {m0_sieve:.2f}")
+    if st.session_state.num_fractions == 3:
+        st.success(f"**Módulo de Finura $m_1$ (de la segunda fracción):** {m1_sieve:.2f}")
+    st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y t1 de los áridos.")
+
+
 st.subheader("--- Proporciones de Árido ---")
 
-# --- IMAGEN PARA T0 (más pequeña) ---
-# Asegúrate de que 'assets/t0_instructions.png' exista en tu proyecto.
-# Si no lo tienes, puedes usar un placeholder:
-# t0_image_path = "https://placehold.co/300x50/ADD8E6/000000?text=Instrucciones+t0"
-t0_image_path = "assets/t0_instructions.png" 
+# Añadir las fórmulas como recordatorio para el usuario
+st.markdown("""
+Para determinar los porcentajes volumétricos de las fracciones de árido ($t_i$), se utiliza el concepto del Módulo de Finura ($m$) de cada fracción o de las combinaciones.
 
-st.image(
-    t0_image_path,
-    caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-    width=650 # Ajustado el ancho a 650px
+**Fórmulas de referencia para el Módulo de Finura y los Porcentajes de Árido ($t_i$):**
+* **Módulo de Finura de una fracción de árido ($m$):**
+    $$m = \\frac{\\sum (\\% \\text{retenido acumulado de esa fracción en los tamices})}{100}$$
+* **Porcentaje de la fracción más fina ($t_0$):**
+    $t_0$ es el porcentaje de volumen total de áridos que corresponde a la fracción más fina (arena). Este valor se elige en función del módulo de finura $m_0$ calculado para la arena o la combinación de áridos finos.
+* **Porcentaje de la segunda fracción ($t_1$, si aplica):**
+    $t_1$ es el porcentaje de volumen total de áridos que corresponde a la segunda fracción (normalmente grava de menor tamaño).
+* **Porcentaje de la tercera fracción ($t_2$, si aplica):**
+    $t_2$ es el porcentaje de volumen total de áridos que corresponde a la tercera fracción (normalmente grava de mayor tamaño).
+
+    *Nota: Las fórmulas completas de De la Peña para calcular $t_i$ a partir de $t_{an}$ (porcentaje del árido de menor tamaño sobre el total) y los porcentajes retenidos acumulados ($ta_i$) de las mezclas de los áridos individuales son más complejas y se usan para un diseño detallado de la curva granulométrica combinada. En esta calculadora, $t_0$ y $t_1$ se ingresan manualmente, utilizando los **Módulos de Finura $m_0$ y $m_1$ calculados arriba** como guía para su correcta selección, asegurando una buena trabajabilidad y resistencia.*
+""")
+
+# --- IMAGEN PARA T0 (más pequeña y centrada) ---
+t0_image_path = "assets/t0_instructions.png" 
+# Si no tienes la imagen local, puedes usar un placeholder:
+# t0_image_path = "https://placehold.co/300x50/ADD8E6/000000?text=Instrucciones+t0"
+
+# Usamos st.markdown con HTML para centrar la imagen
+st.markdown(
+    f"<div style='text-align: center;'><img src='{t0_image_path}' width='300'></div>",
+    unsafe_allow_html=True
 )
+st.caption("🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.")
 
 t0_finest_agg_pct = st.number_input(
     "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
@@ -327,19 +420,9 @@ t0_finest_agg_pct = st.number_input(
 )
 
 # --- INICIO DE LA LÓGICA CLAVE PARA t1 ---
-# Esta es la parte que controla si el input t1 aparece o no.
-# Se basa en el valor de st.session_state.num_fractions que se actualiza
-# cada vez que el usuario cambia el selectbox "Número de fracciones de árido".
-
 t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
 
 if st.session_state.num_fractions == 3: 
-    # --- IMAGEN PARA T1 (ELIMINADA) ---
-    # st.image(
-    #     "assets/t1_instructions.png", # Esta línea ha sido comentada
-    #     caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
-    #     use_container_width=True
-    # )
     st.write("Por favor, introduce el porcentaje t1 para la segunda fracción de árido.") # Mensaje de texto en su lugar
     t1_pct = st.number_input(
         "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
@@ -395,13 +478,12 @@ if st.button("Calcular Diseño Final de Mezcla"):
         cement_volume_difference = cement_volume_adjusted - cement_volume_initial
         st.session_state.cement_volume_difference = cement_volume_difference
 
-        # 6. Cálculo de Módulos de Finura (usando num_fractions del session_state)
-        m0_sieve, m1_sieve = compute_fineness_modules_from_sieve(sieve_data_str, st.session_state.num_fractions)
-        st.session_state.m0_sieve = m0_sieve
-        st.session_state.m1_sieve = m1_sieve
+        # Módulos de Finura ya están en session_state porque se calculan dinámicamente arriba
+        m0_sieve = st.session_state.m0_sieve
+        m1_sieve = st.session_state.m1_sieve
+
 
         # Aseguramos que current_t1_pct tome el valor correcto (input o calculado)
-        # Este valor ya se ha determinado en la sección de inputs de t0/t1 más arriba
         current_t1_pct = st.session_state.t1_pct_input 
         
         # Cálculo de proporciones de árido
@@ -417,7 +499,7 @@ if st.button("Calcular Diseño Final de Mezcla"):
             st.write(f"**Porcentajes iniciales de árido (t0, t1 calculados):** {', '.join([f'{t:.2f}%' for t in initial_t_fractions])}")
 
         # Aplicar correcciones
-        corrected_t_fractions = apply_corrections(initial_t_fractions, aggregate_type, vibrated, placing_type, air_pct)
+        corrected_t_fractions = apply_correcciones(initial_t_fractions, aggregate_type, vibrated, placing_type, air_pct)
         st.write(f"**Porcentajes de árido después de las correcciones:** {', '.join([f'{t:.2f}%' for t in corrected_t_fractions])}")
 
         # Normalizar porcentajes
