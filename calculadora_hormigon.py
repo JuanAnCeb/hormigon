@@ -393,7 +393,7 @@ st.image(
 
 t0_finest_agg_pct = st.number_input(
     "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
-    min_value=0.0, max_value=100.0, value=65.0, step=1.0,
+    min_value=0.0, max_value=100.0, value=30.0, step=1.0,
     key="t0_input"
 )
 
