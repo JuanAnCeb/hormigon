@@ -218,7 +218,7 @@ def compute_fineness_modules_from_sieve(sieve_data_str, num_fractions):
     return m0, m1
 
 
-def apply_corrections(t_fractions, aggregate_type, vibrated, placing_type, air_pct):
+def apply_correcciones(t_fractions, aggregate_type, vibrated, placing_type, air_pct):
     """
     Aplica correcciones a los porcentajes de las fracciones de árido.
     """
