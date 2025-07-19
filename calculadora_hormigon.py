@@ -317,7 +317,7 @@ t0_image_path = "assets/t0_instructions.png"
 st.image(
     t0_image_path,
     caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-    width=300 # Ajustado el ancho a 300px
+    width=650 # Ajustado el ancho a 650px
 )
 
 t0_finest_agg_pct = st.number_input(
