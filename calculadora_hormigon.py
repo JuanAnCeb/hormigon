@@ -382,24 +382,14 @@ else:
     st.info("Utilice estos módulos de finura como guía para seleccionar los porcentajes t0 y t1 de los áridos.")
 
 
+# --- IMAGEN AÑADIDA EN LUGAR DEL TEXTO DE FÓRMULAS ---
 st.subheader("--- Proporciones de Árido ---")
+st.markdown(
+    f"<div style='text-align: center;'><img src='image_07ce03.jpg' width='600'></div>",
+    unsafe_allow_html=True
+)
+st.caption("🛈 Utilice esta imagen de referencia para ajustar los valores de t0 y t1.")
 
-# Añadir las fórmulas como recordatorio para el usuario
-st.markdown("""
-Para determinar los porcentajes volumétricos de las fracciones de árido ($t_i$), se utiliza el concepto del Módulo de Finura ($m$) de cada fracción o de las combinaciones.
-
-**Fórmulas de referencia para el Módulo de Finura y los Porcentajes de Árido ($t_i$):**
-* **Módulo de Finura de una fracción de árido ($m$):**
-    $$m = \\frac{\\sum (\\% \\text{retenido acumulado de esa fracción en los tamices})}{100}$$
-* **Porcentaje de la fracción más fina ($t_0$):**
-    $t_0$ es el porcentaje de volumen total de áridos que corresponde a la fracción más fina (arena). Este valor se elige en función del módulo de finura $m_0$ calculado para la arena o la combinación de áridos finos.
-* **Porcentaje de la segunda fracción ($t_1$, si aplica):**
-    $t_1$ es el porcentaje de volumen total de áridos que corresponde a la segunda fracción (normalmente grava de menor tamaño).
-* **Porcentaje de la tercera fracción ($t_2$, si aplica):**
-    $t_2$ es el porcentaje de volumen total de áridos que corresponde a la tercera fracción (normalmente grava de mayor tamaño).
-
-    *Nota: Las fórmulas completas de De la Peña para calcular $t_i$ a partir de $t_{an}$ (porcentaje del árido de menor tamaño sobre el total) y los porcentajes retenidos acumulados ($ta_i$) de las mezclas de los áridos individuales son más complejas y se usan para un diseño detallado de la curva granulométrica combinada. En esta calculadora, $t_0$ y $t_1$ se ingresan manualmente, utilizando los **Módulos de Finura $m_0$ y $m_1$ calculados arriba** como guía para su correcta selección, asegurando una buena trabajabilidad y resistencia.*
-""")
 
 # --- IMAGEN PARA T0 (más pequeña y centrada) ---
 t0_image_path = "assets/t0_instructions.png" 
