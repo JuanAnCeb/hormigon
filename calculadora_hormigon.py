@@ -384,31 +384,19 @@ else:
 
 # --- IMAGEN AÑADIDA EN LUGAR DEL TEXTO DE FÓRMULAS ---
 st.subheader("--- Proporciones de Árido ---")
-st.markdown(
-    f"<div style='text-align: center;'><img src='image_07ce03.jpg' width='600'></div>",
-    unsafe_allow_html=True
-)
-st.caption("🛈 Utilice esta imagen de referencia para ajustar los valores de t0 y t1.")
-
-
-# --- IMAGEN PARA T0 (más pequeña y centrada) ---
 t0_image_path = "assets/t0_instructions.png" 
-# Si no tienes la imagen local, puedes usar un placeholder:
-# t0_image_path = "https://placehold.co/300x50/ADD8E6/000000?text=Instrucciones+t0"
 
-# Usamos st.markdown con HTML para centrar la imagen
 st.markdown(
-    f"<div style='text-align: center;'><img src='{t0_image_path}' width='300'></div>",
+    f"<div style='text-align: center;'><img src='{t0_image_path}' width='600'></div>", # Ancho ajustado para mejor visibilidad
     unsafe_allow_html=True
 )
-st.caption("🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.")
+st.caption("🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos. Utilice esta imagen de referencia para ajustar los valores de t0 y t1.")
 
 t0_finest_agg_pct = st.number_input(
     "Porcentaje t0 para la fracción de árido más fina (del volumen total de áridos)",
     min_value=0.0, max_value=100.0, value=65.0, step=1.0,
     key="t0_input"
 )
-
 # --- INICIO DE LA LÓGICA CLAVE PARA t1 ---
 t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
 
