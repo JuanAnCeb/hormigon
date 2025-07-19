@@ -398,36 +398,36 @@ t0_finest_agg_pct = st.number_input(
 )
 
 # --- INICIO DE LA LÓGICA CLAVE PARA ta1 y t1 ---
-ta1_input_value = 0.0 # Inicializamos ta1_input_value con un valor por defecto
 t1_calculated_value = 0.0 # Inicializamos t1_calculated_value
 
 if st.session_state.num_fractions == 3: 
-    st.write("Por favor, introduce el porcentaje ta1 para la segunda fracción de árido.") 
-    ta1_input_value = st.number_input( # Cambiado a ta1_input_value
+    st.session_state.ta1_input = st.number_input( # Asignamos directamente al session_state
         "Porcentaje ta1 (relación de áridos) para la segunda fracción de árido", # Texto de la etiqueta actualizado
         min_value=0.0, value=st.session_state.ta1_input, step=1.0, 
-        key="ta1_input" # Cambiado a ta1_input
+        key="ta1_input" 
     )
-    st.session_state.ta1_input = ta1_input_value # Actualiza el valor en session_state
 
     # CÁLCULO DE t1 USANDO LA NUEVA FÓRMULA
-    if ta1_input_value > 0: # Evitar división por cero
-        t1_calculated_value = t0_finest_agg_pct * ((100 - ta1_input_value) / ta1_input_value)
+    if st.session_state.ta1_input > 0: # Evitar división por cero
+        t1_calculated_value = t0_finest_agg_pct * ((100 - st.session_state.ta1_input) / st.session_state.ta1_input)
     else:
-        st.warning("El valor de ta1 debe ser mayor que 0 para calcular t1.")
-        t1_calculated_value = 0.0 # O algún otro valor por defecto o lanzar error
-        st.stop() # Detener ejecución si ta1 es 0 o negativo, ya que la división por cero no tiene sentido aquí.
+        st.warning("El valor de ta1 debe ser mayor que 0 para calcular t1. Ajustando t1 a 0 para continuar.")
+        t1_calculated_value = 0.0
+        # No usamos st.stop() aquí para que la aplicación no se detenga por un error de entrada,
+        # pero el usuario es advertido y el cálculo de t1 se maneja para evitar errores.
+
 
     st.info(f"El valor de t1 calculado es: {t1_calculated_value:.2f}%")
 
     # Validación para 3 fracciones (con el nuevo t1 calculado)
-    if t0_finest_agg_pct + t1_calculated_value > 100.0:
-        st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 calculado ({t1_calculated_value:.2f}%) excede el 100%. Por favor, ajuste t0 o ta1.")
-        st.stop() # Detiene la ejecución hasta que el usuario corrija
+    # Aquí podríamos hacer una validación más suave o solo advertir en lugar de detener
+    if t0_finest_agg_pct + t1_calculated_value > 100.0 and t1_calculated_value > 0: # Solo advertir si es un valor positivo de t1
+        st.warning(f"Advertencia: La suma de t0 ({t0_finest_agg_pct:.2f}%) y t1 calculado ({t1_calculated_value:.2f}%) excede el 100%. Esto podría resultar en una t2 negativa.")
+        # No usamos st.stop() aquí, permitiendo al usuario ver el resultado y ajustar.
 
 else: # Si num_fractions es 2, t1_pct se calcula como antes
     t1_calculated_value = 100.0 - t0_finest_agg_pct
-    st.session_state.ta1_input = 0.0 # No aplicable para 2 fracciones, se podría resetear o dejarlo.
+    # No es necesario establecer st.session_state.ta1_input = 0.0 aquí ya que no se usa para 2 fracciones
 
 # Asignar el valor calculado de t1 a la variable que se usará en los cálculos posteriores
 t1_pct_for_calculations = t1_calculated_value 
@@ -438,7 +438,7 @@ t1_pct_for_calculations = t1_calculated_value
 st.info(f"DEBUG: Número de fracciones seleccionado: {st.session_state.num_fractions}")
 st.info(f"DEBUG: Valor de t0: {t0_finest_agg_pct:.2f}%")
 if st.session_state.num_fractions == 3:
-    st.info(f"DEBUG: Valor de ta1 (input): {ta1_input_value:.2f}")
+    st.info(f"DEBUG: Valor de ta1 (input de session_state): {st.session_state.ta1_input:.2f}") # Accede directamente a session_state
 st.info(f"DEBUG: Valor final de t1 (para cálculos): {t1_pct_for_calculations:.2f}%")
 # --- Fin del mensaje de depuración ---
 
