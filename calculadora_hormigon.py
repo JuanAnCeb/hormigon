@@ -61,20 +61,20 @@ LIMITS_DATA_DICT = {
     "X0": {"mass_min_cement": "150", "mass_max_cement": "", "mass_max_a_c": "0.7", "reinforced_min_cement": "180", "reinforced_max_cement": "", "reinforced_max_a_c": "0.65", "prestressed_min_cement": "200", "prestressed_max_cement": "", "prestressed_max_a_c": "0.6"},
     "XC1": {"mass_min_cement": "200", "mass_max_cement": "", "mass_max_a_c": "0.6", "reinforced_min_cement": "220", "reinforced_max_cement": "", "reinforced_max_a_c": "0.55", "prestressed_min_cement": "240", "reinforced_max_cement": "", "prestressed_max_a_c": "0.5"},
     "XC2": {"mass_min_cement": "220", "mass_max_cement": "", "mass_max_a_c": "0.55", "reinforced_min_cement": "240", "reinforced_max_cement": "", "reinforced_max_a_c": "0.5", "prestressed_min_cement": "260", "reinforced_max_cement": "", "prestressed_max_a_c": "0.45"},
-    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "mass_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "reinforced_max_cement": "", "prestressed_max_a_c": "0.4"},
+    "XC3": {"mass_min_cement": "240", "mass_max_cement": "", "mass_max_a_c": "0.5", "reinforced_min_cement": "260", "reinforced_max_cement": "", "reinforced_max_a_c": "0.45", "prestressed_min_cement": "280", "reinforced_max_cement": "", "prestressed_max_a_c": "0.4"},
     "XC4": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XD1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
     "XD2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XS1": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XS2": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "reinforced_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "reinforced_max_cement": "", "prestressed_max_a_c": "0.26"},
     "XS3": {"mass_min_cement": "360", "mass_max_cement": "", "mass_max_a_c": "0.27", "reinforced_min_cement": "380", "mass_max_cement": "", "reinforced_max_a_c": "0.26", "prestressed_min_cement": "400", "mass_max_cement": "", "prestressed_max_a_c": "0.25"},
-    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "mass_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "mass_max_cement": "", "prestressed_max_a_c": "0.35"},
-    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
-    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "mass_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "mass_max_cement": "", "prestressed_max_a_c": "0.3"},
-    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
-    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XF1": {"mass_min_cement": "260", "mass_max_cement": "", "mass_max_a_c": "0.45", "reinforced_min_cement": "280", "reinforced_max_cement": "", "reinforced_max_a_c": "0.4", "prestressed_min_cement": "300", "reinforced_max_cement": "", "prestressed_max_a_c": "0.35"},
+    "XF2": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XF3": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XF4": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
+    "XA1": {"mass_min_cement": "280", "mass_max_cement": "", "mass_max_a_c": "0.4", "reinforced_min_cement": "300", "reinforced_max_cement": "", "reinforced_max_a_c": "0.35", "prestressed_min_cement": "320", "reinforced_max_cement": "", "prestressed_max_a_c": "0.3"},
+    "XA2": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "reinforced_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "reinforced_max_cement": "", "prestressed_max_a_c": "0.28"},
+    "XA3": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "reinforced_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "reinforced_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XM1": {"mass_min_cement": "300", "mass_max_cement": "", "mass_max_a_c": "0.35", "reinforced_min_cement": "320", "mass_max_cement": "", "reinforced_max_a_c": "0.3", "prestressed_min_cement": "340", "mass_max_cement": "", "prestressed_max_a_c": "0.28"},
     "XM2": {"mass_min_cement": "320", "mass_max_cement": "", "mass_max_a_c": "0.3", "reinforced_min_cement": "340", "mass_max_cement": "", "reinforced_max_a_c": "0.28", "prestressed_min_cement": "360", "mass_max_cement": "", "prestressed_max_a_c": "0.27"},
     "XM3": {"mass_min_cement": "340", "mass_max_cement": "", "mass_max_a_c": "0.28", "reinforced_min_cement": "360", "mass_max_cement": "", "reinforced_max_a_c": "0.27", "prestressed_min_cement": "380", "mass_max_cement": "", "prestressed_max_a_c": "0.26"},
@@ -308,16 +308,16 @@ sieve_data_str = st.text_area(
 # --- Sección de inputs para t0 y t1 (SIEMPRE VISIBLE, t1 CONDICIONAL) ---
 st.subheader("--- Proporciones de Árido ---")
 
-# --- IMAGEN PARA T0 ---
+# --- IMAGEN PARA T0 (más pequeña) ---
 # Asegúrate de que 'assets/t0_instructions.png' exista en tu proyecto.
 # Si no lo tienes, puedes usar un placeholder:
-# t0_image_path = "https://placehold.co/600x100/ADD8E6/000000?text=Instrucciones+t0"
+# t0_image_path = "https://placehold.co/300x50/ADD8E6/000000?text=Instrucciones+t0"
 t0_image_path = "assets/t0_instructions.png" 
 
 st.image(
     t0_image_path,
     caption="🛈 El valor de t0 es el % de la fracción más fina sobre el volumen total de áridos.",
-    use_container_width=True
+    width=300 # Ajustado el ancho a 300px
 )
 
 t0_finest_agg_pct = st.number_input(
@@ -334,18 +334,13 @@ t0_finest_agg_pct = st.number_input(
 t1_pct = 0.0 # Inicializamos t1_pct con un valor por defecto
 
 if st.session_state.num_fractions == 3: 
-    # --- IMAGEN PARA T1 ---
-    # El error indica que 'assets/t1_instructions.png' no se encuentra.
-    # OPCIÓN 1: Asegúrate de que el archivo existe en la carpeta 'assets'.
-    # OPCIÓN 2 (Recomendado si no tienes la imagen): Usa una URL de placeholder.
-    t1_image_path = "https://placehold.co/600x100/90EE90/000000?text=Instrucciones+t1" # Placeholder
-    # t1_image_path = "assets/t1_instructions.png" # Si tienes el archivo local, descomenta esta línea y comenta la de arriba.
-
-    st.image(
-        t1_image_path,
-        caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
-        use_container_width=True
-    )
+    # --- IMAGEN PARA T1 (ELIMINADA) ---
+    # st.image(
+    #     "assets/t1_instructions.png", # Esta línea ha sido comentada
+    #     caption="🛈 El valor de t1 es el % de la segunda fracción de árido (del volumen total de áridos).",
+    #     use_container_width=True
+    # )
+    st.write("Por favor, introduce el porcentaje t1 para la segunda fracción de árido.") # Mensaje de texto en su lugar
     t1_pct = st.number_input(
         "Porcentaje t1 para la segunda fracción de árido (del volumen total de áridos)",
         min_value=0.0, max_value=100.0, value=st.session_state.t1_pct_input, step=1.0, 
