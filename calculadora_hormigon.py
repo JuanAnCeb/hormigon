@@ -401,15 +401,20 @@ t0_finest_agg_pct = st.number_input(
 t1_calculated_value = 0.0 # Inicializamos t1_calculated_value
 
 if st.session_state.num_fractions == 3: 
-    st.session_state.ta1_input = st.number_input( # Asignamos directamente al session_state
+    # **CORRECCIÓN:** Eliminado la asignación directa a st.session_state.ta1_input aquí.
+    # st.number_input con 'key' ya maneja la actualización del session_state.
+    ta1_input_value = st.number_input( 
         "Porcentaje ta1 (relación de áridos) para la segunda fracción de árido", # Texto de la etiqueta actualizado
         min_value=0.0, value=st.session_state.ta1_input, step=1.0, 
         key="ta1_input" 
     )
+    # Ahora, actualiza el session_state *después* de que el widget lo haya procesado, si es necesario,
+    # pero el problema inicial era intentar ASIGNAR el resultado del widget de nuevo a la misma key en la misma línea
+    # Lo correcto es leerlo desde session_state o usar la variable local 'ta1_input_value'
 
     # CÁLCULO DE t1 USANDO LA NUEVA FÓRMULA
-    if st.session_state.ta1_input > 0: # Evitar división por cero
-        t1_calculated_value = t0_finest_agg_pct * ((100 - st.session_state.ta1_input) / st.session_state.ta1_input)
+    if ta1_input_value > 0: # Usamos la variable local del input
+        t1_calculated_value = t0_finest_agg_pct * ((100 - ta1_input_value) / ta1_input_value)
     else:
         st.warning("El valor de ta1 debe ser mayor que 0 para calcular t1. Ajustando t1 a 0 para continuar.")
         t1_calculated_value = 0.0
