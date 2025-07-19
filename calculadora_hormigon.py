@@ -422,8 +422,6 @@ if st.session_state.num_fractions == 3:
         # pero el usuario es advertido y el cálculo de t1 se maneja para evitar errores.
 
 
-    st.info(f"El valor de t1 calculado es: {t1_calculated_value:.2f}%")
-
     # Validación para 3 fracciones (con el nuevo t1 calculado)
     # Aquí podríamos hacer una validación más suave o solo advertir en lugar de detener
     if t0_finest_agg_pct + t1_calculated_value > 100.0 and t1_calculated_value > 0: # Solo advertir si es un valor positivo de t1
@@ -439,13 +437,6 @@ t1_pct_for_calculations = t1_calculated_value
 # --- FIN DE LA LÓGICA CLAVE PARA ta1 y t1 ---
 
 
-# --- Mensaje de depuración para que puedas ver el estado ---
-st.info(f"DEBUG: Número de fracciones seleccionado: {st.session_state.num_fractions}")
-st.info(f"DEBUG: Valor de t0: {t0_finest_agg_pct:.2f}%")
-if st.session_state.num_fractions == 3:
-    st.info(f"DEBUG: Valor de ta1 (input de session_state): {st.session_state.ta1_input:.2f}") # Accede directamente a session_state
-st.info(f"DEBUG: Valor final de t1 (para cálculos): {t1_pct_for_calculations:.2f}%")
-# --- Fin del mensaje de depuración ---
 
 
 # --- Botón para iniciar el cálculo principal ---
